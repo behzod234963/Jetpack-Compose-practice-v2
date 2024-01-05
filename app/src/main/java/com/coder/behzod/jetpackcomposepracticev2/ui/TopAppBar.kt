@@ -1,11 +1,9 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui
 
-import android.widget.Toolbar
 import androidx.compose.foundation.background
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MediumTopAppBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
@@ -24,7 +22,7 @@ fun HomeScreen() {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 @Preview
-fun ToolbarScreen(){
+fun SetTopAppBar(){
     TopAppBar(title = {
         Text(text = "AppBar",
             color = Color.Red,
