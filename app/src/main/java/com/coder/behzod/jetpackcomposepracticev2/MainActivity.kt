@@ -39,35 +39,8 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComposePracticeV2Theme {
-                MainScreen()
+
             }
         }
-    }
-}
-@Preview
-@Composable
-fun PreviewViews() {
-    Column(
-        verticalArrangement = Arrangement.SpaceBetween
-    ) {
-        Row {
-            SetTopAppBar()
-        }
-        Column {
-            ProductsItem()
-        }
-        Row {
-            CategoryRow()
-        }
-    }
-}
-@Composable
-fun MainScreen(){
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .fillMaxHeight()
-    ) {
-        ProductsItem()
     }
 }
