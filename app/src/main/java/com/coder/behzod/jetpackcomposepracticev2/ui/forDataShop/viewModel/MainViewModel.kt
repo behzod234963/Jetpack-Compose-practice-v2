@@ -51,6 +51,7 @@ data class Programmer(
         val mactchingCombinations = listOf(
             "$firstName$lastName",
             "$firstName $lastName",
+            "${firstName.first()}${lastName.first()}",
             "${firstName.first()} ${lastName.first()}"
         )
         return mactchingCombinations.any{
