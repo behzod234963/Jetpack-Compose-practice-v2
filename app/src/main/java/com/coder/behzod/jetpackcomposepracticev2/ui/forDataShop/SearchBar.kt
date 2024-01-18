@@ -40,7 +40,9 @@ fun SearchBar() {
         TextField(
             value = searchText,
             onValueChange = viewModel::searchTextChange,
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(Color.White),
             placeholder = { Text(text = "Type Here...")}
         )
         Spacer(

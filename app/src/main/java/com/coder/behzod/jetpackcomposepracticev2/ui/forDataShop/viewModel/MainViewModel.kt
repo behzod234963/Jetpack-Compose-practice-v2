@@ -48,13 +48,13 @@ data class Programmer(
     val lastName:String
 ){
     fun matchSearchQuery(query:String):Boolean{
-        val mactchingCombinations = listOf(
+        val matchingCombinations = listOf(
             "$firstName$lastName",
             "$firstName $lastName",
             "${firstName.first()}${lastName.first()}",
             "${firstName.first()} ${lastName.first()}"
         )
-        return mactchingCombinations.any{
+        return matchingCombinations.any{
             it.contains(query, ignoreCase = true)
         }
     }
