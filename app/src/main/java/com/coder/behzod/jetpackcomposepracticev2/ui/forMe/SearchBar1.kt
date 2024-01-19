@@ -1,9 +1,8 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
 
-import android.provider.CalendarContract.Colors
+package com.coder.behzod.jetpackcomposepracticev2.ui.forMe
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,13 +16,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.icons.Icons
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.material3.TextFieldColors
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -35,13 +30,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.coder.behzod.jetpackcomposepracticev2.R
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.SearchResultsScreen
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.viewModel.MainViewModel
 
 @Composable
-fun SearchBar(onClick:()->Unit) {
+fun SearchBar() {
     val viewModel = viewModel<MainViewModel>()
     val searchText by viewModel.searchText.collectAsState()
+    val programmers by viewModel.programmers.collectAsState()
+    val isSearching by viewModel.isSearching.collectAsState()
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -73,7 +69,7 @@ fun SearchBar(onClick:()->Unit) {
                 value = searchText,
                 onValueChange = viewModel::searchTextChange,
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .width(200.dp)
                     .padding(start = 5.dp, bottom = 5.dp, end = 5.dp)
                     .background(Color.White),
                 placeholder = { Text(text = "Type Here...")}
@@ -82,6 +78,26 @@ fun SearchBar(onClick:()->Unit) {
                 modifier = Modifier
                     .height(16.dp)
             )
+            if (isSearching){
+                Box(modifier = Modifier.fillMaxSize()){
+                    CircularProgressIndicator(
+                        modifier = Modifier.align(Alignment.Center)
+                    )
+                }
+            }else{
+                LazyColumn(
+                    modifier = Modifier.fillMaxWidth()
+                ){
+                    items(programmers){programmers->
+                        Text(
+                            text = "${programmers.firstName} ${programmers.lastName}",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(16.dp)
+                        )
+                    }
+                }
+            }
             Column(
                 modifier = Modifier
                     .background(Color.Red)
@@ -89,14 +105,15 @@ fun SearchBar(onClick:()->Unit) {
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.ic_search),
-                    contentDescription ="search button",
-                    modifier = Modifier
-                        .clickable {
-                            onClick.invoke()
-                        }
+                    contentDescription ="search button"
                 )
             }
         }
     }
 }
 
+@Preview
+@Composable
+fun SearchBarPreview () {
+    SearchBar()
+}
