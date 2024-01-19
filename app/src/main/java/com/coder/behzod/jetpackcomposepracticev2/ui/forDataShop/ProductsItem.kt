@@ -33,7 +33,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
 
-@Preview
 @Composable
 fun ProductsItem() {
     Box() {
@@ -179,4 +178,10 @@ fun ProductsItem() {
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun ProductsItemPreview() {
+    ProductsItem()
 }

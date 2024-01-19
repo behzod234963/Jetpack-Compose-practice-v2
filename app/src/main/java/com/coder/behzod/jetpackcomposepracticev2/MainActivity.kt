@@ -43,7 +43,7 @@ class MainActivity : ComponentActivity() {
                 Column(
                     modifier = Modifier.fillMaxSize()
                 ) {
-                    SearchBar()
+                    ProductsItem()
                 }
             }
         }
