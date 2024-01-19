@@ -1,4 +1,4 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens
+package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,14 +15,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.Screens
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.viewModel.MainViewModel
 
 @Composable
-fun SearchResultsScreen(onClick: () -> Unit) {
+fun SearchResultsScreen() {
     val viewModel = viewModel<MainViewModel>()
     val searchText by viewModel.searchText.collectAsState()
     val programmers by viewModel.programmers.collectAsState()
     val isSearching by viewModel.isSearching.collectAsState()
+
     if (isSearching){
         Box(modifier = Modifier.fillMaxSize()){
             CircularProgressIndicator(
