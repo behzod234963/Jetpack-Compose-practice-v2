@@ -4,7 +4,12 @@ package com.coder.behzod.jetpackcomposepracticev2
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Info
@@ -21,6 +26,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.CategoryRow
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.ProductsItem
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.SetTopAppBar
 import com.coder.behzod.jetpackcomposepracticev2.ui.theme.JetpackComposePracticeV2Theme
@@ -32,11 +38,36 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+            JetpackComposePracticeV2Theme {
+                MainScreen()
+            }
+        }
+    }
+}
+@Preview
+@Composable
+fun PreviewViews() {
+    Column(
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
+        Row {
+            SetTopAppBar()
+        }
+        Column {
             ProductsItem()
+        }
+        Row {
+            CategoryRow()
         }
     }
 }
 @Composable
 fun MainScreen(){
-    SetTopAppBar()
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .fillMaxHeight()
+    ) {
+        ProductsItem()
+    }
 }
