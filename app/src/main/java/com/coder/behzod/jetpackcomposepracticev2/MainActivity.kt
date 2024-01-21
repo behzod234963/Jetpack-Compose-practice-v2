@@ -26,10 +26,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.tooling.preview.Preview
+import com.coder.behzod.jetpackcomposepracticev2.ui.DemoTextField
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.CategoryRow
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.ProductsItem
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.SearchBar
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.SetTopAppBar
+import com.coder.behzod.jetpackcomposepracticev2.ui.navigation.NavGraph
 import com.coder.behzod.jetpackcomposepracticev2.ui.theme.JetpackComposePracticeV2Theme
 import dev.bogibek.employees.view.CustomExposedDropdownMenuBox
 
@@ -40,11 +42,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComposePracticeV2Theme {
-                Column(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    ProductsItem()
-                }
+                NavGraph()
             }
         }
     }
