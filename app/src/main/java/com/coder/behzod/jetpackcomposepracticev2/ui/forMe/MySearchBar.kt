@@ -13,7 +13,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
@@ -33,7 +32,7 @@ import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.viewModel.MainViewModel
 
 @Composable
-fun SearchBar() {
+fun MySearchBar() {
     val viewModel = viewModel<MainViewModel>()
     val searchText by viewModel.searchText.collectAsState()
     val programmers by viewModel.programmers.collectAsState()
@@ -69,7 +68,7 @@ fun SearchBar() {
                 value = searchText,
                 onValueChange = viewModel::searchTextChange,
                 modifier = Modifier
-                    .width(200.dp)
+                    .fillMaxWidth()
                     .padding(start = 5.dp, bottom = 5.dp, end = 5.dp)
                     .background(Color.White),
                 placeholder = { Text(text = "Type Here...")}
@@ -98,16 +97,6 @@ fun SearchBar() {
                     }
                 }
             }
-            Column(
-                modifier = Modifier
-                    .background(Color.Red)
-                    .size(56.dp)
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.ic_search),
-                    contentDescription ="search button"
-                )
-            }
         }
     }
 }
@@ -115,5 +104,5 @@ fun SearchBar() {
 @Preview
 @Composable
 fun SearchBarPreview () {
-    SearchBar()
+    MySearchBar()
 }

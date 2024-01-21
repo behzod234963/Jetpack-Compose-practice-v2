@@ -1,6 +1,7 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
 
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -15,33 +16,40 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import androidx.navigation.navArgument
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.Screens
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.viewModel.MainViewModel
 
 @Composable
-fun SearchResultsScreen() {
+fun SearchResultsScreen(navController: NavController) {
     val viewModel = viewModel<MainViewModel>()
     val searchText by viewModel.searchText.collectAsState()
     val programmers by viewModel.programmers.collectAsState()
     val isSearching by viewModel.isSearching.collectAsState()
 
-    if (isSearching){
-        Box(modifier = Modifier.fillMaxSize()){
-            CircularProgressIndicator(
-                modifier = Modifier.align(Alignment.Center)
-            )
-        }
-    }else{
-        LazyColumn(
-            modifier = Modifier.fillMaxWidth()
-        ){
-            items(programmers){programmers->
-                Text(
-                    text = "${programmers.firstName} ${programmers.lastName}",
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(16.dp)
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        if (isSearching){
+            Box(modifier = Modifier.fillMaxSize()){
+                CircularProgressIndicator(
+                    modifier = Modifier.align(Alignment.Center)
                 )
+            }
+        }else{
+            LazyColumn(
+                modifier = Modifier.fillMaxWidth()
+            ){
+                items(programmers){programmers->
+                    Text(
+                        text = "${programmers.firstName} ${programmers.lastName}",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp)
+                    )
+                }
             }
         }
     }
