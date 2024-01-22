@@ -1,6 +1,5 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.viewModel
+package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
-import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.FlowPreview

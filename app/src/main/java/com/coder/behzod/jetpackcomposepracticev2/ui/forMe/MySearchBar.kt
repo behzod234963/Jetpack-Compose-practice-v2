@@ -29,7 +29,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.coder.behzod.jetpackcomposepracticev2.R
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.viewModel.MainViewModel
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.MainViewModel
 
 @Composable
 fun MySearchBar() {
