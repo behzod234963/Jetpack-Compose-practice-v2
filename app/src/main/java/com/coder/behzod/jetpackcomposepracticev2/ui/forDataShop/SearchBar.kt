@@ -49,33 +49,36 @@ import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.viewModel.MainVi
 
 @Composable
 fun SearchBar(navController: NavController?) {
-    val modifiered = Modifier
     var text by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
-            .padding(16.dp)
             .fillMaxSize()
             .background(Color.White)
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
+                .offset(y = 10.dp),
+            horizontalArrangement = Arrangement.Center
         ) {
             Column(
                 modifier = Modifier
-                    .size(56.dp)
-                    .padding(5.dp)
+                    .width(54.dp)
+                    .height(52.dp)
+                    .fillMaxSize()
+                    .align(Alignment.CenterVertically)
             ) {
                 Column(
                     modifier = Modifier
                         .fillMaxSize()
-                        .padding(top = 5.dp)
+                        .padding(start = 5.dp)
+                        .clickable { }
                         .background(Color.Red),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Image(
                         painter = painterResource(id = R.drawable.ic_category),
-                        contentDescription = "category"
+                        contentDescription = "category",
                     )
                 }
             }
@@ -88,12 +91,13 @@ fun SearchBar(navController: NavController?) {
             ) {
                 OutlinedTextField(
                     modifier = Modifier
-                        .padding(start = 5.dp, bottom = 5.dp)
+                        .padding( end = 5.dp, start = 5.dp)
                         .background(Color.White)
+                        .fillMaxWidth()
                         .clickable {
                             navController?.navigate(Screens.SearchResults.route)
                         }
-                        .border(2.dp, color = Color.Black, shape = RoundedCornerShape(10.dp)),
+                        .border(1.dp, color = Color.Black, shape = RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
                     value = text,
                     enabled = false,

@@ -23,7 +23,7 @@ fun NavGraph() {
         composable(
             route = Screens.SearchResults.route,
         ){
-            SearchResultsScreen(navController = navController,null)
+            SearchResultsScreen(navController = navController)
         }
         composable(
             route = Screens.SearchBar.route

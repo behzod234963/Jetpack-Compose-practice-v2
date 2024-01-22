@@ -1,5 +1,6 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.viewModel
 
+import androidx.compose.ui.text.toLowerCase
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.FlowPreview
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
+import java.util.Locale
 
 class MainViewModel: ViewModel() {
     private val _searchText = MutableStateFlow("")
@@ -49,10 +51,10 @@ data class Programmer(
 ){
     fun matchSearchQuery(query:String):Boolean{
         val matchingCombinations = listOf(
-            "$firstName$lastName",
-            "$firstName $lastName",
-            "${firstName.first()}${lastName.first()}",
-            "${firstName.first()} ${lastName.first()}"
+            "$firstName$lastName".toLowerCase(Locale.ROOT),
+            "$firstName $lastName".toLowerCase(Locale.ROOT),
+            "${firstName.first()}${lastName.first()}".toLowerCase(Locale.ROOT),
+            "${firstName.first()} ${lastName.first()}".toLowerCase(Locale.ROOT)
         )
         return matchingCombinations.any{
             it.contains(query, ignoreCase = true)
@@ -66,7 +68,7 @@ private val allProgrammers = listOf(
     ),
     Programmer(
         firstName = "Philipp",
-        lastName =" Lackner"
+        lastName ="Lackner"
     ),
     Programmer(
         firstName = "Neco",
