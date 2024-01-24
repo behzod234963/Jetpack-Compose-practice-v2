@@ -34,7 +34,14 @@ import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
 
 @Composable
-fun ProductsItem() {
+fun ProductsItem(
+    productName:String?,
+    productImage:Int?,
+    productPrice:String?,
+    productRating:Int?,
+    comment:Int?,
+    isNew:Boolean? = true
+) {
     Box() {
         Column(
             verticalArrangement = Arrangement.Center,
@@ -72,13 +79,13 @@ fun ProductsItem() {
                             .clickable { }
                             .padding(horizontal = 10.dp),
                         painter = painterResource(
-                            id = R.drawable.ic_launcher_background
+                            id = productImage!!
                         ),
                         contentDescription = "image description",
                         contentScale = ContentScale.Crop,
                     )
                     Text(
-                        text = "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+                        text = productName!!,
                         style = TextStyle(
                             fontSize = 12.sp,
                             fontWeight = FontWeight(400),
@@ -125,7 +132,7 @@ fun ProductsItem() {
                             modifier = Modifier.clickable { }
                         )
                         Text(
-                            text = ("(31)"),
+                            text = comment.toString(),
                             color = Color.Black,
                             fontSize = 10.sp,
                             modifier = Modifier
@@ -134,7 +141,7 @@ fun ProductsItem() {
                         )
                     }
                     Text(
-                        text = "14.540.000 UZS",
+                        text = productPrice!!,
                         fontSize = 15.sp,
                         fontWeight = FontWeight(600),
                         color = Color.Black,
@@ -150,20 +157,22 @@ fun ProductsItem() {
             .fillMaxWidth()
             .fillMaxHeight()
     ) {
-        Box(
-            modifier = Modifier
-                .width(41.dp)
-                .height(18.68201.dp)
-                .background(color = Color(0xFFE81D1C))
-                .padding(bottom = 2.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = "New",
-                fontSize = 10.sp,
-                color = Color.White,
-                fontWeight = FontWeight.Bold,
-            )
+        if (isNew == true){
+            Box(
+                modifier = Modifier
+                    .width(41.dp)
+                    .height(18.68201.dp)
+                    .background(color = Color(0xFFE81D1C))
+                    .padding(bottom = 2.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                Text(
+                    text = "New",
+                    fontSize = 10.sp,
+                    color = Color.White,
+                    fontWeight = FontWeight.Bold,
+                )
+            }
         }
         Box(
             modifier = Modifier
@@ -183,5 +192,5 @@ fun ProductsItem() {
 @Preview
 @Composable
 fun ProductsItemPreview() {
-    ProductsItem()
+    ProductsItem(null,null,null,null,null,true)
 }
