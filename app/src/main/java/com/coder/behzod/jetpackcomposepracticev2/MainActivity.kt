@@ -5,11 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
-import com.coder.behzod.jetpackcomposepracticev2.model.ProductModel
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.ExampleHorizontalPager
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.ProductsItem
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.favoriteScreen.FavoriteScreen
-import com.coder.behzod.jetpackcomposepracticev2.ui.navigation.NavGraph
 import com.coder.behzod.jetpackcomposepracticev2.ui.theme.JetpackComposePracticeV2Theme
 
 

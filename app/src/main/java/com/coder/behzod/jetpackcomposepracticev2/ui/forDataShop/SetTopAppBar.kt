@@ -51,11 +51,7 @@ import androidx.compose.ui.unit.toSize
 import com.coder.behzod.jetpackcomposepracticev2.R
 import dev.bogibek.employees.view.CustomExposedDropdownMenuBox
 
-@Composable
-@Preview
-fun ShowPreview() {
-    SetTopAppBar()
-}
+
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -108,4 +104,10 @@ fun SetTopAppBar() {
             }
         }
     )
+}
+
+@Composable
+@Preview
+fun ShowPreview() {
+    SetTopAppBar()
 }
