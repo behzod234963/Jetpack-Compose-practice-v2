@@ -39,121 +39,102 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.model.ProductModel
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.ProductsItem
 import java.util.ArrayList
-val productsModel = ArrayList<ProductModel>()
 
 @Composable
-fun FavoriteScreen(model:ProductModel) {
+fun FavoriteScreen() {
+    val productsModel = ArrayList<ProductModel>()
     productsModel.add(
         ProductModel(
-        1,
-        "Asus ROG Strix",
-        R.drawable.pic_laptop,
-            "25 000 000",
+        null,
+            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+            R.drawable.pic_product_image,
+            "14.540.000 UZS",
             5,
             true,
-            31
+            50
     )
     )
     productsModel.add(
         ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
+            null,
+            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+            R.drawable.pic_product_image,
+            "14.540.000 UZS",
             5,
             true,
-            31
+            50
         )
     )
     productsModel.add(
         ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
+            null,
+            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+            R.drawable.pic_product_image,
+            "14.540.000 UZS",
             5,
             true,
-            31
+            50
         )
     )
     productsModel.add(
         ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
+            null,
+            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+            R.drawable.pic_product_image,
+            "14.540.000 UZS",
             5,
             true,
-            31
+            50
         )
     )
     productsModel.add(
         ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
+            null,
+            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+            R.drawable.pic_product_image,
+            "14.540.000 UZS",
             5,
             true,
-            31
+            50
         )
     )
     productsModel.add(
         ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
+            null,
+            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+            R.drawable.pic_product_image,
+            "14.540.000 UZS",
             5,
             true,
-            31
+            50
         )
     )
     productsModel.add(
         ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
+            null,
+            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+            R.drawable.pic_product_image,
+            "14.540.000 UZS",
             5,
             true,
-            31
+            50
         )
     )
     productsModel.add(
         ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
+            null,
+            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+            R.drawable.pic_product_image,
+            "14.540.000 UZS",
             5,
             true,
-            31
+            50
         )
     )
-    productsModel.add(
-        ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
-            5,
-            true,
-            31
-        )
-    )
-    productsModel.add(
-        ProductModel(
-            1,
-            "Asus ROG Strix",
-            R.drawable.pic_laptop,
-            "25 000 000",
-            5,
-            true,
-            31
-        )
-    )
+
+
     val sortTypes = remember {
         mutableListOf(
             "Сначала дешевые",
@@ -170,8 +151,8 @@ fun FavoriteScreen(model:ProductModel) {
     ) {
         Box(
             modifier = Modifier
-                .height(30.dp)
-                .width(185.dp),
+                .height(50.dp)
+                .width(200.dp),
             contentAlignment = Alignment.TopStart
         ) {
             SortType(list = sortTypes)
@@ -179,7 +160,7 @@ fun FavoriteScreen(model:ProductModel) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 10.dp),
+                .padding(top = 25.dp),
             contentAlignment = Alignment.BottomEnd
         ) {
             Text(
@@ -194,17 +175,13 @@ fun FavoriteScreen(model:ProductModel) {
                 )
             )
         }
-        Spacer(
-            modifier = Modifier
-                .height(29.dp)
-        )
         LazyVerticalGrid(
             modifier = Modifier
-                .padding(top = 50.dp),
+                .padding(top = 60.dp),
             columns = GridCells.Fixed(2)
         ){
             items(productsModel.size){
-
+                ProductsItem()
             }
         }
     }
@@ -213,15 +190,7 @@ fun FavoriteScreen(model:ProductModel) {
 @Preview
 @Composable
 fun PreviewFavoriteScreen() {
-    FavoriteScreen(model = ProductModel(
-        1,
-        "Asus ROG Strix",
-        R.drawable.pic_laptop,
-        "25 000 000",
-        5,
-        true,
-        31
-    ))
+    FavoriteScreen()
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

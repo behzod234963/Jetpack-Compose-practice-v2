@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             JetpackComposePracticeV2Theme {
-                ProductsItem()
+                FavoriteScreen()
             }
         }
     }
