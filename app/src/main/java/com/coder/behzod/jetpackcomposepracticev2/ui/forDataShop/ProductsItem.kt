@@ -1,21 +1,19 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
 
-import android.icu.text.ListFormatter.Width
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.material3.Icon
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,173 +22,166 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.Font
-import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
+import com.coder.behzod.jetpackcomposepracticev2.ui.theme.BlackData
+import com.coder.behzod.jetpackcomposepracticev2.ui.theme.GrayData
 
 @Composable
-fun ProductsItem(
-    productName:String?,
-    productImage:Int?,
-    productPrice:String?,
-    productRating:Int?,
-    comment:Int?,
-    isNew:Boolean? = true
-) {
-    Box() {
-        Column(
-            verticalArrangement = Arrangement.Center,
+fun ProductsItem() {
+    Box(
+        modifier = Modifier
+            .shadow(
+                elevation = 10.dp,
+                spotColor = GrayData,
+                ambientColor = GrayData
+            )
+            .clickable {  }
+            .height(260.dp)
+            .width(170.dp)
+            .background(Color(0xFFFFFFFF))
+    ) {
+        Box(
             modifier = Modifier
-                .width(180.dp)
-                .height(250.dp)
-                .padding(5.dp)
-                .background(Color.White)
-                .shadow(
-                    elevation = 10.dp,
-                    spotColor = Color.Black
-                )
+                .fillMaxWidth()
+                .height(20.dp)
         ) {
-            Column(
+            Row(
                 modifier = Modifier
-                    .clickable { }
-                    .fillMaxWidth()
-                    .fillMaxHeight()
-                    .padding(8.dp)
-                    .background(Color.White),
-                verticalArrangement = Arrangement.Center
+                    .fillMaxSize()
             ) {
                 Column(
                     modifier = Modifier
-                        .clickable { }
-                        .fillMaxWidth()
-                        .fillMaxHeight()
-                        .padding(horizontal = 10.dp, vertical = 20.dp)
+                        .height(20.dp)
+                        .width(40.dp)
+                        .background(Color.Red),
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    Text(
+                        text = "New",
+                        fontSize = 10.sp,
+                        fontWeight = FontWeight(700),
+                        color = Color.White
+                    )
+                }
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize(),
+                    horizontalAlignment = Alignment.End
                 ) {
                     Image(
-                        alignment = Alignment.Center,
                         modifier = Modifier
-                            .fillMaxWidth()
-                            .fillMaxHeight(0.50f)
-                            .clickable { }
-                            .padding(horizontal = 10.dp),
-                        painter = painterResource(
-                            id = productImage!!
-                        ),
-                        contentDescription = "image description",
-                        contentScale = ContentScale.Crop,
-                    )
-                    Text(
-                        text = productName!!,
-                        style = TextStyle(
-                            fontSize = 12.sp,
-                            fontWeight = FontWeight(400),
-                            color = Color(0xFF000000)
-                        ),
-                        modifier = Modifier
-                            .padding(top = 10.dp)
-                            .clickable { }
-                    )
-                    Row(
-                        modifier = Modifier
-                            .padding(top = 3.dp)
-                            .fillMaxWidth()
-                            .height(20.dp)
-                    ) {
-                        Image(
-                            painter = painterResource(id = R.drawable.ic_star_filled),
-                            contentDescription = "image description",
-                            contentScale = ContentScale.None,
-                            modifier = Modifier.clickable { }
-                        )
-                        Image(
-                            painter = painterResource(id = R.drawable.ic_star_filled),
-                            contentDescription = "image description",
-                            contentScale = ContentScale.None,
-                            modifier = Modifier.clickable { }
-                        )
-                        Image(
-                            painter = painterResource(id = R.drawable.ic_star_filled),
-                            contentDescription = "image description",
-                            contentScale = ContentScale.None,
-                            modifier = Modifier.clickable { }
-                        )
-                        Image(
-                            painter = painterResource(id = R.drawable.ic_star_filled),
-                            contentDescription = "image description",
-                            contentScale = ContentScale.None,
-                            modifier = Modifier.clickable { }
-                        )
-                        Image(
-                            painter = painterResource(id = R.drawable.ic_star_filled),
-                            contentDescription = "image description",
-                            contentScale = ContentScale.None,
-                            modifier = Modifier.clickable { }
-                        )
-                        Text(
-                            text = comment.toString(),
-                            color = Color.Black,
-                            fontSize = 10.sp,
-                            modifier = Modifier
-                                .padding(start = 5.dp)
-                                .clickable { }
-                        )
-                    }
-                    Text(
-                        text = productPrice!!,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight(600),
-                        color = Color.Black,
+                            .offset(x = (-12).dp, y = 12.dp)
+                            .clickable { },
+                        painter = painterResource(id = R.drawable.ic_favorite),
+                        contentDescription = "favorite_button",
+                        alignment = Alignment.CenterEnd
                     )
                 }
             }
         }
-    }
-    Box(
-        contentAlignment = Alignment.TopStart,
-        modifier = Modifier
-            .padding(top = 5.dp, start = 10.dp)
-            .fillMaxWidth()
-            .fillMaxHeight()
-    ) {
-        if (isNew == true){
-            Box(
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Top
+        ) {
+            Spacer(modifier = Modifier.height(14.dp))
+            Image(
                 modifier = Modifier
-                    .width(41.dp)
-                    .height(18.68201.dp)
-                    .background(color = Color(0xFFE81D1C))
-                    .padding(bottom = 2.dp),
-                contentAlignment = Alignment.Center
+                    .clickable {  }
+                    .height(110.dp)
+                    .width(90.dp),
+                painter = painterResource(id = R.drawable.pic_product_image),
+                contentDescription = "product_image",
+            )
+            Spacer(modifier = Modifier.height(14.dp))
+            Text(
+                modifier = Modifier
+                    .clickable {  },
+                text = "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
+                fontSize = 12.sp,
+                fontWeight = FontWeight(400),
+                color = Color(0xFF000000)
+            )
+            Spacer(modifier = Modifier.height(6.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
             ) {
+                Image(
+                    modifier = Modifier.
+                    clickable {  },
+                    painter = painterResource(id = R.drawable.ic_star_filled),
+                    contentDescription = "ic_star",
+                    contentScale = ContentScale.None
+                )
+                Image(
+                    modifier = Modifier.
+                    clickable {  },
+                    painter = painterResource(id = R.drawable.ic_star_filled),
+                    contentDescription = "ic_star",
+                    contentScale = ContentScale.None
+                )
+                Image(
+                    modifier = Modifier.
+                    clickable {  },
+                    painter = painterResource(id = R.drawable.ic_star_filled),
+                    contentDescription = "ic_star",
+                    contentScale = ContentScale.None
+                )
+                Image(
+                    modifier = Modifier.
+                    clickable {  },
+                    painter = painterResource(id = R.drawable.ic_star_filled),
+                    contentDescription = "ic_star",
+                    contentScale = ContentScale.None
+                )
+                Image(
+                    modifier = Modifier.
+                    clickable {  },
+                    painter = painterResource(id = R.drawable.ic_star),
+                    contentDescription = "ic_star",
+                    contentScale = ContentScale.None
+                )
                 Text(
-                    text = "New",
+                    modifier = Modifier
+                        .padding(start = 5.dp)
+                        .clickable {  },
+                    text = "(31)",
                     fontSize = 10.sp,
-                    color = Color.White,
-                    fontWeight = FontWeight.Bold,
+                    fontWeight = FontWeight(400),
+                    color = BlackData
                 )
             }
-        }
-        Box(
-            modifier = Modifier
-                .fillMaxWidth(0.40f)
-                .padding(top = 10.dp),
-            contentAlignment = Alignment.TopEnd
-        ){
-            Image(
-                modifier = Modifier.clickable{},
-                painter = painterResource(id = R.drawable.ic_favorite) ,
-                contentDescription = "favorite",
-            )
+            Spacer(modifier = Modifier.height(11.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Start
+            ) {
+                Text(
+                    modifier = Modifier.
+                    clickable {  },
+                    text = "14.540.000 UZS",
+                    fontSize = 16.sp,
+                    fontWeight = FontWeight(600),
+                    color = BlackData,
+                )
+            }
         }
     }
 }
 
 @Preview
 @Composable
-fun ProductsItemPreview() {
-    ProductsItem(null,null,null,null,null,true)
+fun PreviewProductsItem() {
+    ProductsItem()
 }

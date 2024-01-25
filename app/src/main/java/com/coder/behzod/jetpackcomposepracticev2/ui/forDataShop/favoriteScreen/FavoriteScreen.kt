@@ -39,7 +39,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.model.ProductModel
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.ProductsItem
 import java.util.ArrayList
 val productsModel = ArrayList<ProductModel>()
 
@@ -205,13 +204,7 @@ fun FavoriteScreen(model:ProductModel) {
             columns = GridCells.Fixed(2)
         ){
             items(productsModel.size){
-                ProductsItem(
-                    productName = model.productName,
-                    productImage = model.productImage,
-                    productPrice = model.productPrice,
-                    productRating = model.productRating,
-                    comment = model.commentsCount
-                )
+
             }
         }
     }
