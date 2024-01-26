@@ -98,6 +98,7 @@ fun SetTopAppBarDropDownMenu(
 ) {
     var isExpanded by remember { mutableStateOf(false) }
     var selectedText by remember { mutableStateOf(list[0]) }
+    var isSelected by remember { mutableStateOf(false) }
     Row(
         modifier = Modifier
             .wrapContentWidth()
@@ -120,11 +121,28 @@ fun SetTopAppBarDropDownMenu(
         Spacer(modifier = Modifier.width(25.dp))
         ExposedDropdownMenuBox(
             modifier = Modifier
-                .width(105.dp)
+                .width(135.dp)
                 .border(width = 1.dp, color = Color.Black, shape = RoundedCornerShape(10.dp)),
             expanded = isExpanded, onExpandedChange = { isExpanded = !isExpanded }
         ) {
             OutlinedTextField(
+                leadingIcon = {
+                    if (isSelected){
+                        Image(
+                            modifier = Modifier
+                                .size(30.dp),
+                            painter = painterResource(id = R.drawable.ic_flag_rus),
+                            contentDescription = ""
+                        )
+                    }else{
+                        Image(
+                            modifier = Modifier
+                                .size(28.dp),
+                            painter = painterResource(id = R.drawable.ic_flag_uz),
+                            contentDescription = ""
+                        )
+                    }
+                },
                 value = selectedText,
                 onValueChange = {},
                 readOnly = true,
@@ -171,6 +189,7 @@ fun SetTopAppBarDropDownMenu(
                             }
                         },
                         onClick = {
+                            isSelected = !isSelected
                             isExpanded = false
                             selectedText = list[i]
                         }
