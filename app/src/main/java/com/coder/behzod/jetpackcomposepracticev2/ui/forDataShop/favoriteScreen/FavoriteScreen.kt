@@ -1,6 +1,7 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.favoriteScreen
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -12,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.DropdownMenuItem
@@ -21,6 +23,7 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -146,7 +149,7 @@ fun FavoriteScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-            .padding(top = 105.dp, start = 10.dp, end = 10.dp),
+            .padding( start = 10.dp, end = 10.dp),
     ) {
         Box(
             modifier = Modifier
@@ -199,7 +202,6 @@ fun SortType(
     list: MutableList<String>,
     isError: Boolean = false,
     supportText: String = "",
-    editClick: ((String) -> Unit)? = null,
     onClick: ((String) -> Unit)? = null
 ) {
     var isExpanded by remember {
@@ -214,13 +216,16 @@ fun SortType(
     ) {
 
         ExposedDropdownMenuBox(
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier
+                .fillMaxWidth()
+                .border(width = 1.dp,color = Color.Black,shape = RoundedCornerShape(10.dp)),
             expanded = isExpanded,
             onExpandedChange = {
                 isExpanded = !isExpanded
             }
         ) {
             OutlinedTextField(
+                shape = RoundedCornerShape(10.dp),
                 value = selectedText,
                 onValueChange = {},
                 readOnly = true,
@@ -236,7 +241,8 @@ fun SortType(
             )
 
             ExposedDropdownMenu(
-                modifier = modifier,
+                modifier = Modifier
+                    .border(width = 1.dp,color = Color.Black,shape = RoundedCornerShape(10.dp)),
                 expanded = isExpanded,
                 onDismissRequest = {
                     isExpanded = false
@@ -252,19 +258,6 @@ fun SortType(
                                     modifier = Modifier.weight(1f),
                                     text = list[i]
                                 )
-                                if (i != 0 && i != list.size - 1) {
-                                    IconButton(
-                                        onClick = {
-                                            editClick?.invoke(list[i])
-                                        }
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Edit,
-                                            contentDescription = null,
-                                            modifier = Modifier.size(18.dp)
-                                        )
-                                    }
-                                }
                             }
                         },
                         onClick = {

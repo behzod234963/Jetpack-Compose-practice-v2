@@ -34,13 +34,10 @@ import com.coder.behzod.jetpackcomposepracticev2.ui.theme.GrayData
 fun ProductsItem() {
     Box(
         modifier = Modifier
-            .shadow(
-                elevation = 10.dp,
-                spotColor = GrayData,
-                ambientColor = GrayData
-            )
-            .clickable {  }
+            .clickable { }
+            .padding(10.dp)
             .height(260.dp)
+            .shadow(elevation = 10.dp, spotColor = BlackData, ambientColor = BlackData)
             .width(170.dp)
             .background(Color(0xFFFFFFFF))
     ) {
@@ -94,7 +91,7 @@ fun ProductsItem() {
             Spacer(modifier = Modifier.height(14.dp))
             Image(
                 modifier = Modifier
-                    .clickable {  }
+                    .clickable { }
                     .height(110.dp)
                     .width(90.dp),
                 painter = painterResource(id = R.drawable.pic_product_image),
@@ -103,7 +100,7 @@ fun ProductsItem() {
             Spacer(modifier = Modifier.height(14.dp))
             Text(
                 modifier = Modifier
-                    .clickable {  },
+                    .clickable { },
                 text = "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
                 fontSize = 12.sp,
                 fontWeight = FontWeight(400),
@@ -115,36 +112,31 @@ fun ProductsItem() {
                     .fillMaxWidth()
             ) {
                 Image(
-                    modifier = Modifier.
-                    clickable {  },
+                    modifier = Modifier.clickable { },
                     painter = painterResource(id = R.drawable.ic_star_filled),
                     contentDescription = "ic_star",
                     contentScale = ContentScale.None
                 )
                 Image(
-                    modifier = Modifier.
-                    clickable {  },
+                    modifier = Modifier.clickable { },
                     painter = painterResource(id = R.drawable.ic_star_filled),
                     contentDescription = "ic_star",
                     contentScale = ContentScale.None
                 )
                 Image(
-                    modifier = Modifier.
-                    clickable {  },
+                    modifier = Modifier.clickable { },
                     painter = painterResource(id = R.drawable.ic_star_filled),
                     contentDescription = "ic_star",
                     contentScale = ContentScale.None
                 )
                 Image(
-                    modifier = Modifier.
-                    clickable {  },
+                    modifier = Modifier.clickable { },
                     painter = painterResource(id = R.drawable.ic_star_filled),
                     contentDescription = "ic_star",
                     contentScale = ContentScale.None
                 )
                 Image(
-                    modifier = Modifier.
-                    clickable {  },
+                    modifier = Modifier.clickable { },
                     painter = painterResource(id = R.drawable.ic_star),
                     contentDescription = "ic_star",
                     contentScale = ContentScale.None
@@ -152,7 +144,7 @@ fun ProductsItem() {
                 Text(
                     modifier = Modifier
                         .padding(start = 5.dp)
-                        .clickable {  },
+                        .clickable { },
                     text = "(31)",
                     fontSize = 10.sp,
                     fontWeight = FontWeight(400),
@@ -167,8 +159,7 @@ fun ProductsItem() {
                 horizontalArrangement = Arrangement.Start
             ) {
                 Text(
-                    modifier = Modifier.
-                    clickable {  },
+                    modifier = Modifier.clickable { },
                     text = "14.540.000 UZS",
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
