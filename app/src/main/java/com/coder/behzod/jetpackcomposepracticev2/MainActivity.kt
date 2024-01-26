@@ -14,8 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.SetTopAppBar
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.favoriteScreen.FavoriteScreen
-import com.coder.behzod.jetpackcomposepracticev2.ui.theme.JetpackComposePracticeV2Theme
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.EmptyFavoriteScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -31,7 +30,7 @@ class MainActivity : ComponentActivity() {
                 SetTopAppBar()
                 Divider()
                 Spacer(modifier = Modifier.height(10.dp))
-                FavoriteScreen()
+                EmptyFavoriteScreen()
             }
         }
     }
