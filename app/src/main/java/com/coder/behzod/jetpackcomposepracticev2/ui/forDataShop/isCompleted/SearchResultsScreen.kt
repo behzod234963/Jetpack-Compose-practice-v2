@@ -8,8 +8,10 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -17,6 +19,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -34,6 +37,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.Screens
+import com.coder.behzod.jetpackcomposepracticev2.ui.theme.BlackData
+import com.coder.behzod.jetpackcomposepracticev2.ui.theme.GrayData
 
 @Composable
 fun SearchResultsScreen(navController: NavController?) {
@@ -69,17 +74,31 @@ fun SearchResultsScreen(navController: NavController?) {
                         }
                 )
             }
-            Row (
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp)
-            ){
+            ) {
                 OutlinedTextField(
+                    leadingIcon = {
+                        Icon(
+                            painter = painterResource(id = R.drawable.ic_search),
+                            contentDescription = "",
+                            modifier = Modifier
+                                .size(30.dp)
+                        )
+                    },
+                    placeholder = {
+                        Text(
+                            text = "Искать в DataShop",
+                            color = BlackData
+                        )
+                    },
                     value = searchText,
                     onValueChange = viewModel::searchTextChange,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .border(1.dp,Color.Black, RoundedCornerShape(10.dp)),
+                        .border(1.dp, Color.Black, RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
                     textStyle = TextStyle(
                         color = Color.Black,
@@ -88,23 +107,42 @@ fun SearchResultsScreen(navController: NavController?) {
                 )
             }
         }
-        if (isSearching){
-            Box(modifier = Modifier.fillMaxSize()){
+        Row (
+            modifier = Modifier
+                .padding(start = 10.dp, end = 10.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ){
+            Text(
+                text = "История",
+                fontSize = 17.sp,
+                color = Color.Gray
+            )
+            Text(
+                text = "Очистить",
+                fontSize = 17.sp,
+                color = Color.Blue,
+                modifier = Modifier
+                    .clickable {  }
+            )
+        }
+        if (isSearching) {
+            Box(modifier = Modifier.fillMaxSize()) {
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
-        }else{
+        } else {
             LazyColumn(
                 modifier = Modifier.fillMaxWidth()
-            ){
-                items(programmers){programmers->
+            ) {
+                items(programmers) { programmers ->
                     Text(
                         text = "${programmers.firstName} ${programmers.lastName}",
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(16.dp)
-                            .clickable {  },
+                            .padding(10.dp)
+                            .clickable { },
                         fontSize = 17.sp,
                         color = Color.Black
                     )
