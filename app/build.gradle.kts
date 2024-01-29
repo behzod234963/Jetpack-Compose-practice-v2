@@ -70,4 +70,5 @@ dependencies {
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     val nav_version = "2.7.6"
     implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation ("com.github.bumptech.glide:compose:1.0.0-beta01")
 }

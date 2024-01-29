@@ -175,8 +175,22 @@ fun FavoriteScreen() {
                 .padding(top = 60.dp),
             columns = GridCells.Fixed(2)
         ){
-            items(productsModel.size){
-                ProductsItem()
+            items(productsModel.size)
+            {
+                ProductsItem(
+                    ProductModel(
+                        1,
+                        "asus",
+                        R.drawable.pic_product_image,
+                        "5",
+                        4,
+                        "dsvdgrf",
+                        false,
+                        false,
+                        false
+
+                    )
+                )
             }
         }
     }
