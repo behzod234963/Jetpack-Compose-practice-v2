@@ -5,9 +5,8 @@ data class ProductModel(
     val productName:String,
     val productImage:Int,
     val productPrice:String,
-    val productRating:Int = 0,
+    var productRating:Int = 0,
     val comments:String,
     var isFavorite:Boolean = false,
-    var isRatingChecked:Boolean = false,
     val isNew:Boolean
 )
