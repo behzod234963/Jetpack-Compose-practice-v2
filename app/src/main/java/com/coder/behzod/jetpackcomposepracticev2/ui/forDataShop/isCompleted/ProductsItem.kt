@@ -59,7 +59,7 @@ fun ProductsItem(product: ProductModel) {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                if (product.isNew) {
+                if (product.isNew!!) {
                     Column(
                         modifier = Modifier
                             .height(20.dp)
@@ -82,15 +82,15 @@ fun ProductsItem(product: ProductModel) {
                     horizontalAlignment = Alignment.End
                 ) {
                     IconToggleButton(
-                        checked = isChecked,
+                        checked = isChecked!!,
                         onCheckedChange = { _checked ->
-                            isChecked = !isChecked
+                            isChecked = !isChecked!!
                         },
                         modifier = Modifier
                             .offset(x = (-12).dp, y = 12.dp)
                     ) {
                         Image(
-                            painter = if (!isChecked) painterResource(id = R.drawable.ic_favorite) else painterResource(
+                            painter = if (!isChecked!!) painterResource(id = R.drawable.ic_favorite) else painterResource(
                                 id = R.drawable.ic_favorite_filled
                             ),
                             contentDescription = "ic_favorite"
@@ -134,7 +134,7 @@ fun ProductsItem(product: ProductModel) {
                     modifier = Modifier
                         .padding(start = 5.dp)
                         .clickable { },
-                    text = product.comments,
+                    text = product.comments!!,
                     fontSize = 10.sp,
                     fontWeight = FontWeight(400),
                     color = BlackData

@@ -13,7 +13,7 @@ import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.Prod
 
 @Composable
 fun SetRating(product:ProductModel) {
-    if(product.productRating >= 0){
+    if(product.productRating!! >= 0){
         when(product.productRating){
             0->{
                 Image(
