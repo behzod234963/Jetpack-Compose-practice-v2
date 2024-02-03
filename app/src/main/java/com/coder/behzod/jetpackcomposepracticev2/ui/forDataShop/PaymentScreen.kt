@@ -37,8 +37,24 @@ import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.Prod
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
 import com.coder.behzod.jetpackcomposepracticev2.ui.views.ShoppingCartItem
 
+fun calculateTotalCost(model: ProductModel): String {
+    val productPrice = model.productPrice.toInt()
+    val list = ArrayList<ProductModel>().size
+    val result = list * productPrice
+    return result.toString().moneyType(result.toString())
+}
+
+fun String.moneyType(money: String): String {
+    money
+        .reversed()
+        .chunked(3)
+        .joinToString(" ")
+        .reversed()
+    return money
+}
+
 @Composable
-fun PaymentScreen() {
+fun PaymentScreen(model: ProductModel? = null) {
     val products = ArrayList<ProductModel>()
     products.add(
         ProductModel(
@@ -152,7 +168,7 @@ fun PaymentScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
-    ){
+    ) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -165,12 +181,12 @@ fun PaymentScreen() {
                     .background(Color(0xFFD9D9D9))
             )
             Spacer(modifier = Modifier.height(25.dp))
-            Row (
+            Row(
                 modifier = Modifier
                     .fillMaxWidth(),
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
-            ){
+            ) {
                 Text(
                     text = "Корзина",
                     fontSize = 20.sp,
@@ -199,8 +215,8 @@ fun PaymentScreen() {
                 modifier = Modifier
                     .height(260.dp)
                     .fillMaxWidth()
-            ){
-                itemsIndexed(products){_,items->
+            ) {
+                itemsIndexed(products) { _, items ->
                     ShoppingCartItem(model = items)
                 }
             }
@@ -216,11 +232,11 @@ fun PaymentScreen() {
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Spacer(modifier = Modifier.height(30.dp))
-                Row (
+                Row(
                     modifier = Modifier
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.Center
-                ){
+                ) {
                     Text(
                         text = "Итого:",
                         fontSize = 18.sp,
@@ -230,7 +246,7 @@ fun PaymentScreen() {
                     Text(
                         modifier = Modifier
                             .offset(x = 5.dp),
-                        text = "760 000 UZS",
+                        text = calculateTotalCost(model!!),
                         fontSize = 18.sp,
                         fontWeight = FontWeight(900),
                         color = Color(0xFF3C3C3C)
@@ -242,12 +258,12 @@ fun PaymentScreen() {
                         .fillMaxSize()
                         .padding(horizontal = 30.dp)
                 ) {
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 5.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
-                    ){
+                    ) {
                         Text(
                             text = "Промокод:",
                             fontSize = 16.sp,
@@ -261,12 +277,12 @@ fun PaymentScreen() {
                             color = Color(0xFF888888)
                         )
                     }
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 5.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
-                    ){
+                    ) {
                         Text(
                             text = "Сумма доставки:",
                             fontSize = 16.sp,
@@ -280,12 +296,12 @@ fun PaymentScreen() {
                             color = Color(0xFF888888)
                         )
                     }
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 5.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
-                    ){
+                    ) {
                         Text(
                             text = "Сумма товара:",
                             fontSize = 16.sp,
@@ -299,23 +315,23 @@ fun PaymentScreen() {
                             color = Color(0xFF888888)
                         )
                     }
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 15.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
-                    ){
+                    ) {
                         Divider(
                             thickness = 1.dp,
                             color = Color(0xFFD9D9D9)
                         )
                     }
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 5.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
-                    ){
+                    ) {
                         Text(
                             text = "Доставка:",
                             fontSize = 16.sp,
@@ -329,12 +345,12 @@ fun PaymentScreen() {
                             color = Color(0xFF888888)
                         )
                     }
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 5.dp),
                         horizontalArrangement = Arrangement.SpaceBetween
-                    ){
+                    ) {
                         Button(
                             modifier = Modifier
                                 .fillMaxWidth(),
@@ -354,11 +370,11 @@ fun PaymentScreen() {
                             )
                         }
                     }
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(top = 10.dp)
-                    ){
+                    ) {
                         Text(
                             text = "Нажимая 'Оформить заказ',я соглашаюсь с публичным договором оферты",
                             fontSize = 14.sp,
@@ -371,8 +387,20 @@ fun PaymentScreen() {
         }
     }
 }
+
 @Preview
 @Composable
 fun PreviewPaymentScreen() {
-    PaymentScreen()
+    PaymentScreen(
+        ProductModel(
+            6,
+            "asus",
+            R.drawable.pic_product_image,
+            "6 800 000 UZS",
+            null,
+            null,
+            null,
+            null
+        )
+    )
 }

@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.Modifier
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.PaymentScreen
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductsItem
 
@@ -84,14 +85,7 @@ class MainActivity : ComponentActivity() {
         )
 
         setContent {
-            LazyColumn(
-                modifier = Modifier
-                    .fillMaxSize()
-            ){
-                itemsIndexed(list){_,item->
-                    ProductsItem(product = item)
-                }
-            }
+            PaymentScreen()
         }
     }
 }
