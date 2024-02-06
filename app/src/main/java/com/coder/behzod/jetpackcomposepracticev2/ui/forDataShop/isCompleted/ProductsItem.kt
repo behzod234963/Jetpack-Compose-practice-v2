@@ -149,7 +149,7 @@ fun ProductsItem(product: ProductModel) {
             ) {
                 Text(
                     modifier = Modifier.clickable { },
-                    text = product.productPrice,
+                    text = product.productPrice.toString(),
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
                     color = BlackData,

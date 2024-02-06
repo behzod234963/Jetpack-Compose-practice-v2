@@ -1,6 +1,5 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
 
-import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,13 +11,10 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Text
@@ -36,134 +32,13 @@ import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
 import com.coder.behzod.jetpackcomposepracticev2.ui.views.ShoppingCartItem
-
-fun calculateTotalCost(model: ProductModel): String {
-    val productPrice = model.productPrice.toInt()
-    val list = ArrayList<ProductModel>().size
-    val result = list * productPrice
-    return result.toString().moneyType(result.toString())
-}
-
-fun String.moneyType(money: String): String {
-    money
-        .reversed()
-        .chunked(3)
-        .joinToString(" ")
-        .reversed()
-    return money
-}
+import com.coder.behzod.jetpackcomposepracticev2.utils.moneyType
 
 @Composable
-fun PaymentScreen(model: ProductModel? = null) {
+fun PaymentScreen(model: ProductModel) {
     val products = ArrayList<ProductModel>()
-    products.add(
-        ProductModel(
-            1,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
-    products.add(
-        ProductModel(
-            2,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
-    products.add(
-        ProductModel(
-            3,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
-    products.add(
-        ProductModel(
-            4,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
-    products.add(
-        ProductModel(
-            5,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
-    products.add(
-        ProductModel(
-            6,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
-    products.add(
-        ProductModel(
-            7,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
-    products.add(
-        ProductModel(
-            8,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
-    products.add(
-        ProductModel(
-            9,
-            "asus",
-            R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
-            null,
-            null,
-            null
-        )
-    )
+    val multiply = model.productPrice * products.size
+    val result = moneyType(multiply.toString())
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -246,7 +121,7 @@ fun PaymentScreen(model: ProductModel? = null) {
                     Text(
                         modifier = Modifier
                             .offset(x = 5.dp),
-                        text = calculateTotalCost(model!!),
+                        text =  result,
                         fontSize = 18.sp,
                         fontWeight = FontWeight(900),
                         color = Color(0xFF3C3C3C)
@@ -393,11 +268,14 @@ fun PaymentScreen(model: ProductModel? = null) {
 fun PreviewPaymentScreen() {
     PaymentScreen(
         ProductModel(
-            6,
-            "asus",
+            1,
+            "Asus",
             R.drawable.pic_product_image,
-            "6 800 000 UZS",
-            null,
+            736000,
+            5,
+            "42",
+            false,
+            isNew = true,
             null,
             null,
             null

@@ -34,7 +34,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
-import com.coder.behzod.jetpackcomposepracticev2.model.ProductModel
 import java.util.ArrayList
 
 @Composable
@@ -42,94 +41,19 @@ fun FavoriteScreen() {
     val productsModel = ArrayList<ProductModel>()
     productsModel.add(
         ProductModel(
-        null,
+        1,
             "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
             R.drawable.pic_product_image,
-            "14.540.000 UZS",
+            14540000 ,
             5,
-            true,
-            50
-    )
-    )
-    productsModel.add(
-        ProductModel(
+            "true",
+            false,
+            isNew = true,
             null,
-            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
-            R.drawable.pic_product_image,
-            "14.540.000 UZS",
-            5,
-            true,
-            50
-        )
-    )
-    productsModel.add(
-        ProductModel(
             null,
-            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
-            R.drawable.pic_product_image,
-            "14.540.000 UZS",
-            5,
-            true,
-            50
-        )
+            null
     )
-    productsModel.add(
-        ProductModel(
-            null,
-            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
-            R.drawable.pic_product_image,
-            "14.540.000 UZS",
-            5,
-            true,
-            50
-        )
     )
-    productsModel.add(
-        ProductModel(
-            null,
-            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
-            R.drawable.pic_product_image,
-            "14.540.000 UZS",
-            5,
-            true,
-            50
-        )
-    )
-    productsModel.add(
-        ProductModel(
-            null,
-            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
-            R.drawable.pic_product_image,
-            "14.540.000 UZS",
-            5,
-            true,
-            50
-        )
-    )
-    productsModel.add(
-        ProductModel(
-            null,
-            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
-            R.drawable.pic_product_image,
-            "14.540.000 UZS",
-            5,
-            true,
-            50
-        )
-    )
-    productsModel.add(
-        ProductModel(
-            null,
-            "HP Victus 15 RTX 3050 / i5 12400f / 512 GB SSD..",
-            R.drawable.pic_product_image,
-            "14.540.000 UZS",
-            5,
-            true,
-            50
-        )
-    )
-
-
     val sortTypes = remember {
         mutableListOf(
             "Сначала дешевые",
@@ -180,14 +104,16 @@ fun FavoriteScreen() {
                 ProductsItem(
                     ProductModel(
                         1,
-                        "asus",
-                        R.drawable.pic_product_image,
-                        "5",
+                        "Asus",
+                       R.drawable.pic_product_image,
+                        8000000,
                         4,
                         "dsvdgrf",
-                        false,
-                        false
-
+                        isFavorite = false,
+                        isNew = false,
+                        null,
+                        null,
+                        null
                     )
                 )
             }

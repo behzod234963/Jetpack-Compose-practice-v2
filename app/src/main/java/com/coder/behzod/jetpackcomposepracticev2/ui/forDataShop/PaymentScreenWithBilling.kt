@@ -1,7 +1,6 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
 
 import android.annotation.SuppressLint
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -33,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
+import dev.bogibek.employees.view.DropDownMenuItem
 
 @SuppressLint("InvalidColorHexValue")
 @Composable
@@ -61,10 +61,10 @@ fun PaymentScreenWithBilling() {
                 color = Color(0xFF3C3C3C)
             )
             Spacer(modifier = Modifier.height(20.dp))
-            Row (
+            Row(
                 modifier = Modifier
                     .fillMaxWidth()
-            ){
+            ) {
                 Button(
                     modifier = Modifier
                         .height(40.dp)
@@ -75,11 +75,11 @@ fun PaymentScreenWithBilling() {
                     shape = RectangleShape,
                     onClick = { /*TODO*/ }
                 ) {
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxSize(),
                         horizontalArrangement = Arrangement.Center
-                    ){
+                    ) {
                         Image(
                             modifier = Modifier
                                 .size(20.dp),
@@ -105,14 +105,14 @@ fun PaymentScreenWithBilling() {
                     shape = RectangleShape,
                     onClick = { /*TODO*/ }
                 ) {
-                    Row (
+                    Row(
                         modifier = Modifier
                             .fillMaxSize(),
                         horizontalArrangement = Arrangement.Center
-                    ){
+                    ) {
                         Box(
-                         contentAlignment = Alignment.Center
-                        ){
+                            contentAlignment = Alignment.Center
+                        ) {
                             Image(
                                 modifier = Modifier
                                     .size(20.dp),
@@ -151,6 +151,49 @@ fun PaymentScreenWithBilling() {
                 color = Color(0xFF3C3C3C)
             )
             Spacer(modifier = Modifier.height(20.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ){
+                Row (
+                    modifier = Modifier
+                        .fillMaxWidth(0.50f)
+                ){
+                    Column (
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(70.dp)
+                    ){
+                        Text(
+                            text = "Область",
+                            fontWeight = FontWeight(500),
+                            fontSize = 14.sp,
+                            color = Color(
+                                0xFF636363
+                            )
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        DropDownMenuItem(
+                            placeholder = "Выберите область",
+                            modifier = Modifier.height(70.dp).fillMaxWidth(),
+                            list = mutableListOf(
+                                "Выберите область",
+                                "Каракалпакистан",
+                                "Ташкент",
+                                "Ургенч"
+                            )
+                        )
+                    }
+                }
+                Row (
+                    modifier =Modifier
+                        .fillMaxWidth()
+                ){
+                    Column {
+
+                    }
+                }
+            }
         }
     }
 }
