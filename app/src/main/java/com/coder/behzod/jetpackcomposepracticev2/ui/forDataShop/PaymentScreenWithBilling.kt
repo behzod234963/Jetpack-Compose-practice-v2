@@ -1,6 +1,7 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
 
 import android.annotation.SuppressLint
+import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -16,11 +17,17 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -32,11 +39,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
-import dev.bogibek.employees.view.DropDownMenuItem
 
 @SuppressLint("InvalidColorHexValue")
 @Composable
 fun PaymentScreenWithBilling() {
+    var fullAddress = remember {
+        mutableStateOf("")
+    }
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -60,7 +69,7 @@ fun PaymentScreenWithBilling() {
                 fontSize = 16.sp,
                 color = Color(0xFF3C3C3C)
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -150,20 +159,21 @@ fun PaymentScreenWithBilling() {
                 fontSize = 16.sp,
                 color = Color(0xFF3C3C3C)
             )
-            Spacer(modifier = Modifier.height(20.dp))
+            Spacer(modifier = Modifier.height(10.dp))
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-            ){
-                Row (
+            ) {
+                Row(
                     modifier = Modifier
-                        .fillMaxWidth(0.50f)
-                ){
-                    Column (
+                        .fillMaxWidth()
+                ) {
+                    Column(
                         modifier = Modifier
-                            .fillMaxWidth()
+                            .fillMaxWidth(0.50f)
                             .height(70.dp)
-                    ){
+                            .padding(end = 10.dp)
+                    ) {
                         Text(
                             text = "Область",
                             fontWeight = FontWeight(500),
@@ -174,23 +184,197 @@ fun PaymentScreenWithBilling() {
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         DropDownMenuItem(
-                            placeholder = "Выберите область",
-                            modifier = Modifier.height(70.dp).fillMaxWidth(),
+                            modifier = Modifier
+                                .height(70.dp)
+                                .fillMaxWidth(),
                             list = mutableListOf(
-                                "Выберите область",
-                                "Каракалпакистан",
-                                "Ташкент",
-                                "Ургенч"
+                                "Выберите область"
+                            )
+                        )
+                    }
+                    Column(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(70.dp)
+                            .padding(start = 10.dp)
+                    ) {
+                        Text(
+                            text = "Город",
+                            fontWeight = FontWeight(500),
+                            fontSize = 14.sp,
+                            color = Color(
+                                0xFF636363
+                            )
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        DropDownMenuItem(
+                            modifier = Modifier
+                                .height(70.dp)
+                                .fillMaxWidth(),
+                            list = mutableListOf(
+                                "Выберите город"
                             )
                         )
                     }
                 }
-                Row (
-                    modifier =Modifier
+            }
+            Spacer(modifier = Modifier.height(10.dp))
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+            ) {
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ) {
+                    Text(
+                        text = "Польный адрес",
+                        fontWeight = FontWeight(500),
+                        fontSize = 14.sp,
+                        color = Color(
+                            0xFF636363
+                        )
+                    )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .border(
+                                shape = RoundedCornerShape(3.dp),
+                                color = Color(0xFFBCBCBC),
+                                width = 1.dp
+                            ),
+                        value = fullAddress.value,
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.White,
+                            unfocusedContainerColor = Color.White
+                        ),
+                        onValueChange = {
+                            fullAddress.value = it
+                        },
+                        placeholder = {
+                            Text(
+                                text = "Введите польный адрес",
+                                fontWeight = FontWeight(500),
+                                fontSize = 12.sp,
+                                color = Color(0xFF636363)
+                            )
+                        }
+                    )
+                }
+            }
+            Spacer(modifier = Modifier.height(20.dp))
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .wrapContentHeight()
+            ) {
+                Text(
+                    text = "3.Выберите способ оплаты",
+                    fontWeight = FontWeight(600),
+                    fontSize = 16.sp,
+                    color = Color(
+                        0xFF3C3C3C
+                    )
+                )
+                Spacer(modifier = Modifier.height(10.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxSize()
+                ) {
+                    Button(
+                        modifier = Modifier
+                            .fillMaxWidth(0.50f)
+                            .height(50.dp)
+                            .padding(end = 10.dp)
+                            .border(width = 1.dp, color = Color(0xFFBCBCBC)),
+                        colors = ButtonDefaults.buttonColors(Color.White),
+                        shape = RectangleShape,
+                        onClick = { /*TODO*/ }
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            verticalArrangement = Arrangement.Center,
+                        ) {
+                            Row (
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Center
+                            ){
+                                Image(
+                                    modifier = Modifier
+                                        .size(height = 34.dp, width = 85.dp),
+                                    painter = painterResource(id = R.drawable.ic_click_pay),
+                                    contentDescription = "click"
+                                )
+                            }
+                        }
+                    }
+                    Button(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(50.dp)
+                            .padding(start = 10.dp)
+                            .border(width = 1.dp, color = Color(0xFFBCBCBC)),
+                        colors = ButtonDefaults.buttonColors(Color.White),
+                        shape = RectangleShape,
+                        onClick = { /*TODO*/ }
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            verticalArrangement = Arrangement.Center,
+                        ) {
+                            Row (
+                                modifier = Modifier
+                                    .fillMaxWidth(),
+                                horizontalArrangement = Arrangement.Center
+                            ){
+                                Image(
+                                    modifier = Modifier
+                                        .size(height = 32.dp, width = 82.dp),
+                                    painter = painterResource(id = R.drawable.ic_payme_pay),
+                                    contentDescription = "payme"
+                                )
+                            }
+                        }
+                    }
+                }
+                Spacer(modifier = Modifier.height(10.dp))
+                Row(
+                    modifier = Modifier
                         .fillMaxWidth()
                 ){
-                    Column {
-
+                    Button(
+                        modifier = Modifier
+                            .height(40.dp)
+                            .padding(end = 10.dp)
+                            .border(width = 1.dp, color = Color(0xFFBCBCBC))
+                            .fillMaxWidth(0.50f),
+                        colors = ButtonDefaults.buttonColors(Color.White),
+                        shape = RectangleShape,
+                        onClick = { /*TODO*/ }
+                    ) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxSize(),
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            Image(
+                                modifier = Modifier
+                                    .size(20.dp),
+                                painter = painterResource(id = R.drawable.ic_pickup),
+                                contentDescription = "pickup"
+                            )
+                            Spacer(modifier = Modifier.width(10.dp))
+                            Text(
+                                text = "Самовывоз",
+                                fontSize = 15.sp,
+                                fontWeight = FontWeight(500),
+                                color = Color(0xFF3C3C3C)
+                            )
+                        }
                     }
                 }
             }

@@ -20,7 +20,9 @@ import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
@@ -31,6 +33,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -98,7 +101,7 @@ fun SetTopAppBarDropDownMenu(
         ExposedDropdownMenuBox(
             modifier = Modifier
                 .width(135.dp)
-                .border(width = 1.dp, color = Color.Black, shape = RoundedCornerShape(10.dp)),
+                .border(shape = RectangleShape, color = Color.White, width = 1.dp),
             expanded = isExpanded, onExpandedChange = { isExpanded = !isExpanded }
         ) {
             OutlinedTextField(
@@ -122,7 +125,11 @@ fun SetTopAppBarDropDownMenu(
                 value = selectedText,
                 onValueChange = {},
                 readOnly = true,
-                shape = RoundedCornerShape(10.dp ),
+                colors = TextFieldDefaults.colors(
+                    focusedContainerColor = Color.White,
+                    unfocusedContainerColor = Color.White
+                ),
+                shape = RectangleShape,
                 textStyle = TextStyle(
                     fontSize = 20.sp,
                     color = Color.Black
@@ -131,11 +138,13 @@ fun SetTopAppBarDropDownMenu(
                 modifier = Modifier
                     .fillMaxWidth()
                     .menuAnchor()
-                    .border(width = 1.dp, color = Color.Black, shape = RoundedCornerShape(10.dp))
+                    .background(Color.White)
+                    .border(shape = RectangleShape, color = Color.White, width = 1.dp)
             )
             ExposedDropdownMenu(
                 modifier = Modifier
-                    .border(width = 1.dp, color = Color.Black, shape = RoundedCornerShape(10.dp)),
+                    .background(Color.White)
+                    .border(shape = RectangleShape, color = Color.White, width = 1.dp),
                 expanded = isExpanded,
                 onDismissRequest = { isExpanded = false }
             ) {

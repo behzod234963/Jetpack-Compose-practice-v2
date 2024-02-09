@@ -1,4 +1,4 @@
-package dev.bogibek.employees.view
+package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -21,9 +21,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -31,8 +30,7 @@ import androidx.compose.ui.unit.sp
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DropDownMenuItem(
-    placeholder: String,
-    modifier:Modifier?,
+    modifier: Modifier?,
     list: MutableList<String>,
     onClick: (() -> Unit)? = null,
     editClick: ((String) -> Unit)? = null
@@ -43,29 +41,20 @@ fun DropDownMenuItem(
     ExposedDropdownMenuBox(
         modifier = Modifier
             .background(Color.White)
-            .border(shape = RoundedCornerShape(5.dp), color = Color.Transparent, width = 0.dp),
+            .border(shape = RoundedCornerShape(3.dp), color = Color(0xFFBCBCBC), width = 1.dp),
         expanded = isExpanded, onExpandedChange = { isExpanded = !isExpanded }
     ) {
         OutlinedTextField(
             value = selectedText,
             onValueChange = {},
             readOnly = true,
-            placeholder = {
-                Text(
-                    textAlign = TextAlign.Center,
-                    text = placeholder!!,
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight(500),
-                    color = Color(0xFF909090)
-                )
-            },
-            shape = RoundedCornerShape(5.dp),
+            shape = RectangleShape,
             colors = TextFieldDefaults.colors(
                 focusedContainerColor = Color.White,
                 unfocusedContainerColor = Color.White
             ),
             textStyle = TextStyle(
-                fontSize = 13.5.sp,
+                fontSize = 12.sp,
                 color = Color.Black
             ),
             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = isExpanded) },
@@ -73,12 +62,12 @@ fun DropDownMenuItem(
                 .fillMaxWidth()
                 .menuAnchor()
                 .background(Color.White)
-                .border(shape = RoundedCornerShape(5.dp), color = Color.White, width = 0.dp)
+                .border(shape = RoundedCornerShape(3.dp), color = Color(0xFFBCBCBC), width = 1.dp)
         )
         ExposedDropdownMenu(
             modifier = Modifier
                 .background(Color.White)
-                .border(shape = RoundedCornerShape(5.dp), color = Color.White, width = 0.dp),
+                .border(shape = RoundedCornerShape(3.dp), color = Color(0xFFBCBCBC), width = 1.dp),
             expanded = isExpanded,
             onDismissRequest = { isExpanded = false }
         ) {
