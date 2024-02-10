@@ -267,7 +267,6 @@ fun PaymentScreenWithBilling() {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .wrapContentHeight()
             ) {
                 Text(
                     text = "3.Выберите способ оплаты",
@@ -280,7 +279,7 @@ fun PaymentScreenWithBilling() {
                 Spacer(modifier = Modifier.height(10.dp))
                 Row(
                     modifier = Modifier
-                        .fillMaxSize()
+                        .fillMaxWidth()
                 ) {
                     Button(
                         modifier = Modifier
@@ -341,40 +340,37 @@ fun PaymentScreenWithBilling() {
                         }
                     }
                 }
-                Spacer(modifier = Modifier.height(10.dp))
-                Row(
+                Spacer(modifier = Modifier.height(20.dp))
+                Button(
                     modifier = Modifier
+                        .height(40.dp)
                         .fillMaxWidth()
-                ){
-                    Button(
+                        .border(width = 1.dp, color = Color(0xFFBCBCBC)),
+                    shape = RectangleShape,
+                    colors = ButtonDefaults.buttonColors(Color.White),
+                    onClick = { /*TODO*/ }
+                ) {
+                    Row(
                         modifier = Modifier
-                            .height(40.dp)
-                            .padding(end = 10.dp)
-                            .border(width = 1.dp, color = Color(0xFFBCBCBC))
-                            .fillMaxWidth(0.50f),
-                        colors = ButtonDefaults.buttonColors(Color.White),
-                        shape = RectangleShape,
-                        onClick = { /*TODO*/ }
-                    ) {
-                        Row(
+                            .fillMaxSize(),
+                        horizontalArrangement = Arrangement.Center,
+                        verticalAlignment = Alignment.CenterVertically
+                    ){
+                        Image(
                             modifier = Modifier
-                                .fillMaxSize(),
-                            horizontalArrangement = Arrangement.Center
-                        ) {
-                            Image(
-                                modifier = Modifier
-                                    .size(20.dp),
-                                painter = painterResource(id = R.drawable.ic_pickup),
-                                contentDescription = "pickup"
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
-                            Text(
-                                text = "Самовывоз",
-                                fontSize = 15.sp,
-                                fontWeight = FontWeight(500),
-                                color = Color(0xFF3C3C3C)
-                            )
-                        }
+                                .size(30.dp)
+                                .padding(end = 10.dp),
+                            painter = painterResource(id = R.drawable.ic_wallet),
+                            contentDescription = "wallet"
+                        )
+                        Text(
+                            modifier = Modifier
+                                .padding(start = 10.dp),
+                            text = "Наличными",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight(700),
+                            color = Color(0xFF515151)
+                        )
                     }
                 }
             }

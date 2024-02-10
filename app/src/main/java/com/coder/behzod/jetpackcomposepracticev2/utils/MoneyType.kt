@@ -1,10 +1,17 @@
 package com.coder.behzod.jetpackcomposepracticev2.utils
 
-fun moneyType(money: String): String {
-    money
+fun Long.moneyType():String{
+    return this.toString().moneyType() + "so'm"
+}
+
+fun Int.moneyType():String{
+    return this.toString().moneyType() + "so'm"
+}
+
+private fun String.moneyType(): String {
+    return this
         .reversed()
         .chunked(3)
-        .joinToString(" ")
+        .joinToString { " " }
         .reversed()
-    return "$money UZS"
 }

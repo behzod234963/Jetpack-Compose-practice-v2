@@ -1,7 +1,8 @@
 package com.coder.behzod.jetpackcomposepracticev2.utils
 
 
-fun calculateTotalCost(numFirst:String,numSecond:String): String {
-    val result = numFirst.toInt() * numSecond.toInt()
-    return moneyType(result.toString())
+fun calculateTotalCost(price:Long, products:Long, other:Long ): String {
+    val multiply = price * products
+    val result = multiply.plus(other)
+    return result.moneyType()
 }

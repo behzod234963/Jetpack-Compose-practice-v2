@@ -49,9 +49,9 @@ fun FavoriteScreen() {
             "true",
             false,
             isNew = true,
-            null,
-            null,
-            null
+            30000,
+            "null",
+            "null"
     )
     )
     val sortTypes = remember {
@@ -111,9 +111,9 @@ fun FavoriteScreen() {
                         "dsvdgrf",
                         isFavorite = false,
                         isNew = false,
-                        null,
-                        null,
-                        null
+                        30000,
+                        "null",
+                        "null"
                     )
                 )
             }
