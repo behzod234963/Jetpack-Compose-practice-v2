@@ -38,11 +38,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
+import com.coder.behzod.jetpackcomposepracticev2.ui.views.TotalCost
 
 @SuppressLint("InvalidColorHexValue")
 @Composable
-fun PaymentScreenWithBilling() {
+fun PaymentScreenWithBilling(model:ProductModel) {
     var fullAddress = remember {
         mutableStateOf("")
     }
@@ -374,6 +376,7 @@ fun PaymentScreenWithBilling() {
                     }
                 }
             }
+            TotalCost(model = model, modifier = Modifier)
         }
     }
 }
@@ -381,5 +384,19 @@ fun PaymentScreenWithBilling() {
 @Preview
 @Composable
 fun PreviewPaymentScreenWithBilling() {
-    PaymentScreenWithBilling()
+    PaymentScreenWithBilling(
+        model = ProductModel(
+            1,
+            "asus",
+            R.drawable.pic_product_image,
+            736000,
+            5,
+            "31",
+            false,
+            true,
+            30000,
+            "Курьером",
+            "0"
+        )
+    )
 }

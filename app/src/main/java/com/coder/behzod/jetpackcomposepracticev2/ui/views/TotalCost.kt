@@ -31,7 +31,7 @@ import com.coder.behzod.jetpackcomposepracticev2.utils.calculateTotalCost
 import com.coder.behzod.jetpackcomposepracticev2.utils.moneyType
 
 @Composable
-fun TotalCost(model: ProductModel) {
+fun TotalCost(model: ProductModel,modifier:Modifier) {
     val products = ArrayList<ProductModel>()
     products.add(
         ProductModel(
@@ -49,9 +49,10 @@ fun TotalCost(model: ProductModel) {
         )
     )
     val productsSize = products.size
-    val price: Long = model.productPrice
-    val delivery: Long = model.deliveryPrice
-    val result = calculateTotalCost(price, productsSize, delivery)
+    val productPrice: Long = model.productPrice
+    val deliveryPrice: Long = model.deliveryPrice
+    val productPromocode = model.productPromocode
+    val result = calculateTotalCost(productPrice, productsSize, deliveryPrice)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -63,7 +64,7 @@ fun TotalCost(model: ProductModel) {
             ),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -83,7 +84,7 @@ fun TotalCost(model: ProductModel) {
 
             )
         }
-        Spacer(modifier = Modifier.height(30.dp))
+        Spacer(modifier = Modifier.height(10.dp))
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -102,7 +103,7 @@ fun TotalCost(model: ProductModel) {
                     color = Color(0xFF3C3C3C)
                 )
                 Text(
-                    text = model.productPromocode,
+                    text = productPromocode,
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
                     color = Color(0xFF888888)
@@ -121,7 +122,7 @@ fun TotalCost(model: ProductModel) {
                     color = Color(0xFF3C3C3C)
                 )
                 Text(
-                    text = delivery.moneyType(delivery),
+                    text = deliveryPrice.moneyType(deliveryPrice),
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
                     color = Color(0xFF888888)
@@ -140,7 +141,7 @@ fun TotalCost(model: ProductModel) {
                     color = Color(0xFF3C3C3C)
                 )
                 Text(
-                    text = price.moneyType(price),
+                    text = productPrice.moneyType(productPrice),
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
                     color = Color(0xFF888888)
@@ -149,7 +150,7 @@ fun TotalCost(model: ProductModel) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(vertical = 15.dp),
+                    .padding(vertical = 5.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Divider(
@@ -233,6 +234,7 @@ fun PreviewTotalCost() {
             30000,
             "Курьером",
             "0"
-        )
+        ),
+        Modifier
     )
 }

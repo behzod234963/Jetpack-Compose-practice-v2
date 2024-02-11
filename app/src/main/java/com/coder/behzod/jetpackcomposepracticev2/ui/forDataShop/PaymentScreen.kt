@@ -32,6 +32,7 @@ import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
 import com.coder.behzod.jetpackcomposepracticev2.ui.views.ShoppingCartItem
+import com.coder.behzod.jetpackcomposepracticev2.ui.views.TotalCost
 import com.coder.behzod.jetpackcomposepracticev2.utils.moneyType
 
 @Composable
@@ -94,6 +95,22 @@ fun PaymentScreen(model: ProductModel) {
                 }
             }
             Spacer(modifier = Modifier.height(15.dp))
+            TotalCost(
+                model = ProductModel(
+                1,
+                "asus",
+                R.drawable.pic_product_image,
+                736000,
+                5,
+                "31",
+                false,
+                true,
+                30000,
+                "Курьером",
+                "0"
+            ),
+                modifier = Modifier
+            )
         }
     }
 }
