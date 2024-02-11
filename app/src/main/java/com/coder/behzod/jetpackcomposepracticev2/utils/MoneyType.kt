@@ -1,17 +1,12 @@
 package com.coder.behzod.jetpackcomposepracticev2.utils
 
-fun Long.moneyType():String{
-    return this.toString().moneyType() + "so'm"
+import java.text.DecimalFormat
+
+
+fun String.numberSeparator(number: Long):String{
+    val formatter = DecimalFormat("#,###")
+    return formatter.format(number)
 }
 
-fun Int.moneyType():String{
-    return this.toString().moneyType() + "so'm"
-}
-
-private fun String.moneyType(): String {
-    return this
-        .reversed()
-        .chunked(3)
-        .joinToString { " " }
-        .reversed()
-}
+val currency = "so'm"
+fun Long.moneyType(number:Long):String = this.toString().numberSeparator(number)+" so'm"

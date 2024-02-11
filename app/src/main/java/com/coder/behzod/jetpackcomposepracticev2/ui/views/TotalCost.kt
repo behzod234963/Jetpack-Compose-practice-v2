@@ -48,24 +48,10 @@ fun TotalCost(model: ProductModel) {
             "0"
         )
     )
-    products.add(
-        ProductModel(
-            1,
-            "asus",
-            R.drawable.pic_product_image,
-            736000,
-            5,
-            "31",
-            false,
-            true,
-            30000,
-            "Курьером",
-            "0"
-        )
-    )
-    val moneyInt = products.size
-    val moneyLong = model.productPrice
-    val result = moneyLong.times(moneyInt).moneyType()
+    val productsSize = products.size
+    val price: Long = model.productPrice
+    val delivery: Long = model.deliveryPrice
+    val result = calculateTotalCost(price, productsSize, delivery)
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -135,7 +121,7 @@ fun TotalCost(model: ProductModel) {
                     color = Color(0xFF3C3C3C)
                 )
                 Text(
-                    text = model.deliveryPrice.moneyType(),
+                    text = delivery.moneyType(delivery),
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
                     color = Color(0xFF888888)
@@ -154,7 +140,7 @@ fun TotalCost(model: ProductModel) {
                     color = Color(0xFF3C3C3C)
                 )
                 Text(
-                    text = model.productPrice.moneyType(),
+                    text = price.moneyType(price),
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
                     color = Color(0xFF888888)
