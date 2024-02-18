@@ -1,4 +1,4 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.views
+package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -26,9 +26,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
-import com.coder.behzod.jetpackcomposepracticev2.utils.calculateTotalCost
-import com.coder.behzod.jetpackcomposepracticev2.utils.moneyType
 
 @Composable
 fun TotalCost(model: ProductModel,modifier:Modifier) {

@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.ui.Modifier
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
-import com.coder.behzod.jetpackcomposepracticev2.ui.views.TotalCost
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.TotalCost
 
 
 class MainActivity : ComponentActivity() {

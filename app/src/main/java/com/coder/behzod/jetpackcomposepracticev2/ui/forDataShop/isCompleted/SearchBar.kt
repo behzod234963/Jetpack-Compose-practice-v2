@@ -41,7 +41,7 @@ fun SearchBar(navController: NavController?) {
         modifier = Modifier
             .fillMaxWidth()
             .height(80.dp)
-            .background(Color.White)
+            .background(Color(0xFFFFFFFF))
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -60,14 +60,14 @@ fun SearchBar(navController: NavController?) {
                         .fillMaxSize()
                         .padding(start = 5.dp)
                         .clickable { }
-                        .background(Color.Red),
+                        .background(Color(0xFFFF0000)),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_category),
                         contentDescription = "category",
-                        tint = Color.White
+                        tint = Color(0xFFFFFFFF)
                     )
                 }
             }
@@ -81,19 +81,19 @@ fun SearchBar(navController: NavController?) {
                 OutlinedTextField(
                     modifier = Modifier
                         .padding( end = 5.dp, start = 5.dp)
-                        .background(Color.White)
+                        .background(Color(0xFFFFFFFF))
                         .fillMaxWidth()
                         .clickable {
                             navController?.navigate(Screens.SearchResults.route)
                         }
-                        .border(1.dp, color = Color.Black, shape = RoundedCornerShape(10.dp)),
+                        .border(1.dp, color = Color(0xFF000000), shape = RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
                     value = text,
                     enabled = false,
                     onValueChange = {
                         text = it
                     },
-                    placeholder = { Text(text = "Type Here...", color = Color.Black) }
+                    placeholder = { Text(text = "Type Here...", color = Color(0xFF000000)) }
                 )
             }
         }

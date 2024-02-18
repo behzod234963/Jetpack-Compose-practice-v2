@@ -1,7 +1,6 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
+package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
 import android.annotation.SuppressLint
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -17,7 +16,6 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -38,20 +36,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
-import com.coder.behzod.jetpackcomposepracticev2.ui.views.TotalCost
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.DropDownMenuItem
 
 @SuppressLint("InvalidColorHexValue")
 @Composable
-fun PaymentScreenWithBilling(model:ProductModel) {
-    var fullAddress = remember {
+fun PaymentAndDeliveryScreen(model: ProductModel) {
+    val fullAddress = remember {
         mutableStateOf("")
     }
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color(0xFFFFFFFF))
     ) {
         SetTopAppBar()
         Column(
@@ -82,7 +78,7 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                         .padding(end = 10.dp)
                         .border(width = 1.dp, color = Color(0xFFBCBCBC))
                         .fillMaxWidth(0.50f),
-                    colors = ButtonDefaults.buttonColors(Color.White),
+                    colors = ButtonDefaults.buttonColors(Color(0xFFFFFFFF)),
                     shape = RectangleShape,
                     onClick = { /*TODO*/ }
                 ) {
@@ -112,7 +108,7 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                         .padding(start = 10.dp)
                         .border(width = 1.dp, color = Color(0xFFBCBCBC))
                         .fillMaxWidth(),
-                    colors = ButtonDefaults.buttonColors(Color.White),
+                    colors = ButtonDefaults.buttonColors(Color(0xFFFFFFFF)),
                     shape = RectangleShape,
                     onClick = { /*TODO*/ }
                 ) {
@@ -180,18 +176,14 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                             text = "Область",
                             fontWeight = FontWeight(500),
                             fontSize = 14.sp,
-                            color = Color(
-                                0xFF636363
-                            )
+                            color = Color(0xFF636363)
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         DropDownMenuItem(
                             modifier = Modifier
                                 .height(70.dp)
                                 .fillMaxWidth(),
-                            list = mutableListOf(
-                                "Выберите область"
-                            )
+                            list = mutableListOf("Выберите область")
                         )
                     }
                     Column(
@@ -204,18 +196,14 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                             text = "Город",
                             fontWeight = FontWeight(500),
                             fontSize = 14.sp,
-                            color = Color(
-                                0xFF636363
-                            )
+                            color = Color(0xFF636363)
                         )
                         Spacer(modifier = Modifier.height(5.dp))
                         DropDownMenuItem(
                             modifier = Modifier
                                 .height(70.dp)
                                 .fillMaxWidth(),
-                            list = mutableListOf(
-                                "Выберите город"
-                            )
+                            list = mutableListOf("Выберите город")
                         )
                     }
                 }
@@ -233,9 +221,7 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                         text = "Польный адрес",
                         fontWeight = FontWeight(500),
                         fontSize = 14.sp,
-                        color = Color(
-                            0xFF636363
-                        )
+                        color = Color(0xFF636363)
                     )
                     Spacer(modifier = Modifier.height(10.dp))
                     OutlinedTextField(
@@ -248,8 +234,8 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                             ),
                         value = fullAddress.value,
                         colors = TextFieldDefaults.colors(
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White
+                            focusedContainerColor = Color(0xFFFFFFFF),
+                            unfocusedContainerColor = Color(0xFFFFFFFF)
                         ),
                         onValueChange = {
                             fullAddress.value = it
@@ -289,7 +275,7 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                             .height(50.dp)
                             .padding(end = 10.dp)
                             .border(width = 1.dp, color = Color(0xFFBCBCBC)),
-                        colors = ButtonDefaults.buttonColors(Color.White),
+                        colors = ButtonDefaults.buttonColors(Color(0xFFFFFFFF)),
                         shape = RectangleShape,
                         onClick = { /*TODO*/ }
                     ) {
@@ -298,11 +284,11 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                                 .fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
                         ) {
-                            Row (
+                            Row(
                                 modifier = Modifier
                                     .fillMaxWidth(),
                                 horizontalArrangement = Arrangement.Center
-                            ){
+                            ) {
                                 Image(
                                     modifier = Modifier
                                         .size(height = 34.dp, width = 85.dp),
@@ -318,7 +304,7 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                             .height(50.dp)
                             .padding(start = 10.dp)
                             .border(width = 1.dp, color = Color(0xFFBCBCBC)),
-                        colors = ButtonDefaults.buttonColors(Color.White),
+                        colors = ButtonDefaults.buttonColors(Color(0xFFFFFFFF)),
                         shape = RectangleShape,
                         onClick = { /*TODO*/ }
                     ) {
@@ -327,11 +313,11 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                                 .fillMaxSize(),
                             verticalArrangement = Arrangement.Center,
                         ) {
-                            Row (
+                            Row(
                                 modifier = Modifier
                                     .fillMaxWidth(),
                                 horizontalArrangement = Arrangement.Center
-                            ){
+                            ) {
                                 Image(
                                     modifier = Modifier
                                         .size(height = 32.dp, width = 82.dp),
@@ -349,7 +335,7 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                         .fillMaxWidth()
                         .border(width = 1.dp, color = Color(0xFFBCBCBC)),
                     shape = RectangleShape,
-                    colors = ButtonDefaults.buttonColors(Color.White),
+                    colors = ButtonDefaults.buttonColors(Color(0xFFFFFFFF)),
                     onClick = { /*TODO*/ }
                 ) {
                     Row(
@@ -357,7 +343,7 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                             .fillMaxSize(),
                         horizontalArrangement = Arrangement.Center,
                         verticalAlignment = Alignment.CenterVertically
-                    ){
+                    ) {
                         Image(
                             modifier = Modifier
                                 .size(30.dp)
@@ -376,7 +362,10 @@ fun PaymentScreenWithBilling(model:ProductModel) {
                     }
                 }
             }
-            TotalCost(model = model, modifier = Modifier)
+            TotalCost(
+                model = model,
+                modifier = Modifier
+            )
         }
     }
 }
@@ -384,7 +373,7 @@ fun PaymentScreenWithBilling(model:ProductModel) {
 @Preview
 @Composable
 fun PreviewPaymentScreenWithBilling() {
-    PaymentScreenWithBilling(
+    PaymentAndDeliveryScreen(
         model = ProductModel(
             1,
             "asus",

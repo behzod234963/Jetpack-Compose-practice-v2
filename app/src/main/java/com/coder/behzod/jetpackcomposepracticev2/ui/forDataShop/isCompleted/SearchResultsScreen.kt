@@ -50,13 +50,13 @@ fun SearchResultsScreen(navController: NavController?) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(Color(0xFFFFFFFF))
     ) {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(10.dp)
-                .background(Color.White)
+                .background(Color(0xFFFFFFFF))
         ) {
             Column(
                 modifier = Modifier
@@ -91,17 +91,17 @@ fun SearchResultsScreen(navController: NavController?) {
                     placeholder = {
                         Text(
                             text = "Искать в DataShop",
-                            color = BlackData
+                            color = Color(0xFF000000)
                         )
                     },
                     value = searchText,
                     onValueChange = viewModel::searchTextChange,
                     modifier = Modifier
                         .fillMaxWidth()
-                        .border(1.dp, Color.Black, RoundedCornerShape(10.dp)),
+                        .border(1.dp, Color(0xFF000000), RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
                     textStyle = TextStyle(
-                        color = Color.Black,
+                        color = Color(0xFF000000),
                         fontSize = 15.sp
                     )
                 )
@@ -116,12 +116,12 @@ fun SearchResultsScreen(navController: NavController?) {
             Text(
                 text = "История",
                 fontSize = 17.sp,
-                color = Color.Gray
+                color = Color(0xFF888888)
             )
             Text(
                 text = "Очистить",
                 fontSize = 17.sp,
-                color = Color.Blue,
+                color = Color(0xFF0000FF),
                 modifier = Modifier
                     .clickable {  }
             )
@@ -144,7 +144,7 @@ fun SearchResultsScreen(navController: NavController?) {
                             .padding(10.dp)
                             .clickable { },
                         fontSize = 17.sp,
-                        color = Color.Black
+                        color = Color(0xFF000000)
                     )
                 }
             }

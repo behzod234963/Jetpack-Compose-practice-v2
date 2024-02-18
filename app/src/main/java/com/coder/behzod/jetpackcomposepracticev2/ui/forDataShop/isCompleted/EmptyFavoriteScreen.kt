@@ -2,6 +2,7 @@ package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Text
@@ -14,23 +15,30 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 
+
 @Composable
 fun EmptyFavoriteScreen() {
-    Column(
+    Box(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.White),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            text = "Нет Избранных",
-            style = TextStyle(
-                color = Color(0xFF3C3C3C),
-                fontSize = 18.sp,
-                fontWeight = FontWeight(600)
+    ){
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFFFFFFFF)),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Text(
+                text = "Нет Избранных",
+                style = TextStyle(
+                    color = Color(0xFF3C3C3C),
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight(600)
+                )
             )
-        )
+        }
+        SetTopAppBar()
     }
 }
 

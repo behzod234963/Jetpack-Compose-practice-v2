@@ -59,12 +59,12 @@ fun ProductsItem(product: ProductModel) {
                 modifier = Modifier
                     .fillMaxSize()
             ) {
-                if (product.isNew!!) {
+                if (product.isNew) {
                     Column(
                         modifier = Modifier
                             .height(20.dp)
                             .width(40.dp)
-                            .background(Color.Red),
+                            .background(Color(0xFFFF0000)),
                         verticalArrangement = Arrangement.Center,
                         horizontalAlignment = Alignment.CenterHorizontally
                     ) {
@@ -72,7 +72,7 @@ fun ProductsItem(product: ProductModel) {
                             text = "New",
                             fontSize = 10.sp,
                             fontWeight = FontWeight(700),
-                            color = Color.White
+                            color = Color(0xFFFFFFFF)
                         )
                     }
                 }
@@ -84,13 +84,15 @@ fun ProductsItem(product: ProductModel) {
                     IconToggleButton(
                         checked = isChecked!!,
                         onCheckedChange = { _checked ->
-                            isChecked = !isChecked!!
+                            isChecked = !isChecked
                         },
                         modifier = Modifier
                             .offset(x = (-12).dp, y = 12.dp)
                     ) {
                         Image(
-                            painter = if (!isChecked!!) painterResource(id = R.drawable.ic_favorite) else painterResource(
+                            painter = if (!isChecked)
+                                painterResource(id = R.drawable.ic_favorite)
+                            else painterResource(
                                 id = R.drawable.ic_favorite_filled
                             ),
                             contentDescription = "ic_favorite"
@@ -134,10 +136,10 @@ fun ProductsItem(product: ProductModel) {
                     modifier = Modifier
                         .padding(start = 5.dp)
                         .clickable { },
-                    text = product.comments!!,
+                    text = product.comments,
                     fontSize = 10.sp,
                     fontWeight = FontWeight(400),
-                    color = BlackData
+                    color = Color(0xFF000000)
                 )
             }
             Spacer(modifier = Modifier.height(11.dp))
@@ -152,7 +154,7 @@ fun ProductsItem(product: ProductModel) {
                     text = product.productPrice.toString(),
                     fontSize = 16.sp,
                     fontWeight = FontWeight(600),
-                    color = BlackData,
+                    color = Color(0xFF000000),
                 )
             }
         }
