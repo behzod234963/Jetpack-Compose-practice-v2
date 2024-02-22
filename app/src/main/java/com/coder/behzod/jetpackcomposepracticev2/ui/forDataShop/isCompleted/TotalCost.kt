@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -28,40 +29,17 @@ import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
 
 @Composable
-fun TotalCost(model: ProductModel,modifier:Modifier) {
-    val products = ArrayList<ProductModel>()
-    products.add(
-        ProductModel(
-            1,
-            "asus",
-            R.drawable.pic_product_image,
-            736000,
-            5,
-            "31",
-            false,
-            true,
-            30000,
-            "Курьером",
-            "0"
-        )
-    )
+fun TotalCost(model: ProductModel,modifier:Modifier,products: ArrayList<ProductModel>) {
     val productsSize = products.size
     val productPrice: Long = model.productPrice
     val deliveryPrice: Long = model.deliveryPrice
     val productPromocode = model.productPromocode
     val result = calculateTotalCost(productPrice, productsSize, deliveryPrice)
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .offset()
-            .background(Color.White)
-            .shadow(
-                elevation = 1.dp,
-                shape = RoundedCornerShape(5.dp)
-            ),
+        modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(5.dp))
+        Spacer(modifier = Modifier.height(15.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth(),
@@ -81,7 +59,7 @@ fun TotalCost(model: ProductModel,modifier:Modifier) {
 
             )
         }
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(5.dp))
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -89,8 +67,7 @@ fun TotalCost(model: ProductModel,modifier:Modifier) {
         ) {
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 5.dp),
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
@@ -108,8 +85,7 @@ fun TotalCost(model: ProductModel,modifier:Modifier) {
             }
             Row(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 5.dp),
+                    .fillMaxWidth(),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Text(
@@ -215,23 +191,7 @@ fun TotalCost(model: ProductModel,modifier:Modifier) {
     }
 }
 
-@Preview
 @Composable
-fun PreviewTotalCost() {
-    TotalCost(
-        model = ProductModel(
-            1,
-            "asus",
-            R.drawable.pic_product_image,
-            736000,
-            5,
-            "31",
-            false,
-            true,
-            30000,
-            "Курьером",
-            "0"
-        ),
-        Modifier
-    )
+fun VertScroll() {
+
 }
