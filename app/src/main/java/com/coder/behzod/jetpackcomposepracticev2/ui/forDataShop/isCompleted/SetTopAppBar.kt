@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
@@ -91,7 +93,8 @@ fun SetTopAppBarDropDownMenu(
             }) {
             Icon(
                 modifier = Modifier
-                    .size(30.dp),
+                    .size(30.dp)
+                    .offset(x = 10.dp),
                 tint = Color.Black,
                 painter = painterResource(id = R.drawable.ic_search),
                 contentDescription = "search"
