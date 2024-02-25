@@ -42,7 +42,7 @@ fun OrdersItem(ordersModel: OrdersModel) {
             .background(Color(0xFFFFFFFF)),
         colors = CardDefaults.cardColors(Color(0xFFFFFFFF)),
         shape = RoundedCornerShape(5.dp),
-        elevation = CardDefaults.cardElevation(1.dp)
+        elevation = CardDefaults.cardElevation(2.dp)
     ) {
         Row(
             modifier = Modifier
@@ -81,7 +81,7 @@ fun OrdersItem(ordersModel: OrdersModel) {
                     modifier = Modifier
                         .wrapContentWidth()
                         .wrapContentHeight()
-                        .padding(vertical = 10.dp, horizontal = 5.dp)
+                        .padding(vertical = 5.dp, horizontal = 10.dp)
                         .clickable {  },
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center

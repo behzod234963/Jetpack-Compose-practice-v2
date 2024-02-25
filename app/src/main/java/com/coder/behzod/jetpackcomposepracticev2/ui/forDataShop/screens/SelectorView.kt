@@ -15,6 +15,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -48,6 +51,7 @@ fun SelectorView(navController: NavController) {
     val isNotificationSelected = remember {
         mutableStateOf(false)
     }
+    val notificationList = ArrayList<NotificationModel>()
     val list = ArrayList<OrdersModel>()
     list.add(
         OrdersModel(
@@ -73,6 +77,50 @@ fun SelectorView(navController: NavController) {
             "Oct 21,2021"
         )
     )
+    notificationList.add(
+        NotificationModel(
+            1,
+            "26-10-2022",
+            "С новым 2023 годом",
+            "Lorem Ipsum is simply dummy text " +
+                    "of the printing and typesetting industry. " +
+                    "Lorem Ipsum has been the industry's standard dummy text " +
+                    "ever since the 1500s"
+        )
+    )
+    notificationList.add(
+        NotificationModel(
+            1,
+            "26-10-2022",
+            "С новым 2023 годом",
+            "Lorem Ipsum is simply dummy text " +
+                    "of the printing and typesetting industry. " +
+                    "Lorem Ipsum has been the industry's standard dummy text " +
+                    "ever since the 1500s"
+        )
+    )
+    notificationList.add(
+        NotificationModel(
+            1,
+            "26-10-2022",
+            "С новым 2023 годом",
+            "Lorem Ipsum is simply dummy text " +
+                    "of the printing and typesetting industry. " +
+                    "Lorem Ipsum has been the industry's standard dummy text " +
+                    "ever since the 1500s"
+        )
+    )
+    notificationList.add(
+        NotificationModel(
+            1,
+            "26-10-2022",
+            "С новым 2023 годом",
+            "Lorem Ipsum is simply dummy text " +
+                    "of the printing and typesetting industry. " +
+                    "Lorem Ipsum has been the industry's standard dummy text " +
+                    "ever since the 1500s"
+        )
+    )
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -84,155 +132,170 @@ fun SelectorView(navController: NavController) {
                 .padding(horizontal = 10.dp)
                 .background(Color(0xFFD9D9D9))
         )
-        Column(
+        Card(
             modifier = Modifier
-                .padding(vertical = 10.dp, horizontal = 20.dp)
-                .fillMaxWidth()
-                .wrapContentHeight(),
-            horizontalAlignment = Alignment.CenterHorizontally,
+                .padding(10.dp),
+            colors = CardDefaults.cardColors(Color(0xFFFFFFFF)),
+            shape = RoundedCornerShape(5.dp),
+            elevation = CardDefaults.cardElevation(2.dp)
         ) {
-            Row(
+            Column(
                 modifier = Modifier
+                    .padding(vertical = 10.dp, horizontal = 20.dp)
                     .fillMaxWidth()
-                    .padding(vertical = 15.dp)
-                    .clickable {
-                        isPersonalInfoSelected.value = true
-                        isMyOrdersSelected.value = false
-                        isNotificationSelected.value = false
-                    },
-                verticalAlignment = Alignment.CenterVertically
+                    .wrapContentHeight(),
+                horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                Icon(
+                Row(
                     modifier = Modifier
-                        .size(25.dp),
-                    painter = painterResource(id = R.drawable.ic_person),
-                    tint =
-                    if (isPersonalInfoSelected.value)
-                        Color(0xFFE81D1C)
-                    else
-                        Color(0xFF3C3C3C),
-                    contentDescription = "personal_info"
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(start = 20.dp),
-                    text = "Персональные данные",
-                    fontWeight = FontWeight(400),
-                    fontSize = 16.sp,
-                    color =
-                    if (isPersonalInfoSelected.value)
-                        Color(0xFFE81D1C)
-                    else
-                        Color(0xFF3C3C3C),
-                )
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        isMyOrdersSelected.value = true
-                        isPersonalInfoSelected.value = false
-                        isNotificationSelected.value = false
-                    }
-                    .padding(vertical = 15.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Box(
-                    contentAlignment = Alignment.Center
+                        .fillMaxWidth()
+                        .padding(vertical = 15.dp)
+                        .clickable {
+                            isPersonalInfoSelected.value = true
+                            isMyOrdersSelected.value = false
+                            isNotificationSelected.value = false
+                        },
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Icon(
                         modifier = Modifier
-                            .size(30.dp),
-                        painter = painterResource(id = R.drawable.ic_delivery_1),
-                        contentDescription = "delivery 1",
+                            .size(25.dp),
+                        painter = painterResource(id = R.drawable.ic_person),
                         tint =
-                        if (isMyOrdersSelected.value)
+                        if (isPersonalInfoSelected.value)
+                            Color(0xFFE81D1C)
+                        else
+                            Color(0xFF3C3C3C),
+                        contentDescription = "personal_info"
+                    )
+                    Text(
+                        modifier = Modifier
+                            .padding(start = 20.dp),
+                        text = "Персональные данные",
+                        fontWeight = FontWeight(400),
+                        fontSize = 16.sp,
+                        color =
+                        if (isPersonalInfoSelected.value)
                             Color(0xFFE81D1C)
                         else
                             Color(0xFF3C3C3C),
                     )
-                    Icon(
+                }
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .clickable {
+                            isMyOrdersSelected.value = true
+                            isPersonalInfoSelected.value = false
+                            isNotificationSelected.value = false
+                        }
+                        .padding(vertical = 15.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Box(
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(
+                            modifier = Modifier
+                                .size(30.dp),
+                            painter = painterResource(id = R.drawable.ic_delivery_1),
+                            contentDescription = "delivery 1",
+                            tint =
+                            if (isMyOrdersSelected.value)
+                                Color(0xFFE81D1C)
+                            else
+                                Color(0xFF3C3C3C),
+                        )
+                        Icon(
+                            modifier = Modifier
+                                .size(17.dp),
+                            painter = painterResource(id = R.drawable.ic_delivery_2),
+                            contentDescription = "delivery 2",
+                            tint =
+                            if (isMyOrdersSelected.value)
+                                Color(0xFFE81D1C)
+                            else
+                                Color(0xFF3C3C3C),
+                        )
+                        Icon(
+                            modifier = Modifier
+                                .size(11.dp)
+                                .offset(y = 8.8.dp, x = 9.dp),
+                            painter = painterResource(id = R.drawable.ic_delivery_3),
+                            contentDescription = "delivery 3",
+                            tint =
+                            if (isMyOrdersSelected.value)
+                                Color(0xFFE81D1C)
+                            else
+                                Color(0xFF3C3C3C),
+                        )
+                    }
+                    Text(
                         modifier = Modifier
-                            .size(17.dp),
-                        painter = painterResource(id = R.drawable.ic_delivery_2),
-                        contentDescription = "delivery 2",
-                        tint =
-                        if (isMyOrdersSelected.value)
-                            Color(0xFFE81D1C)
-                        else
-                            Color(0xFF3C3C3C),
-                    )
-                    Icon(
-                        modifier = Modifier
-                            .size(11.dp)
-                            .offset(y = 8.8.dp, x = 9.dp),
-                        painter = painterResource(id = R.drawable.ic_delivery_3),
-                        contentDescription = "delivery 3",
-                        tint =
+                            .padding(start = 20.dp),
+                        text = "Мои заказы",
+                        fontWeight = FontWeight(400),
+                        fontSize = 16.sp,
+                        color =
                         if (isMyOrdersSelected.value)
                             Color(0xFFE81D1C)
                         else
                             Color(0xFF3C3C3C),
                     )
                 }
-                Text(
+                Row(
                     modifier = Modifier
-                        .padding(start = 20.dp),
-                    text = "Мои заказы",
-                    fontWeight = FontWeight(400),
-                    fontSize = 16.sp,
-                    color =
-                    if (isMyOrdersSelected.value)
-                        Color(0xFFE81D1C)
-                    else
-                        Color(0xFF3C3C3C),
+                        .fillMaxWidth()
+                        .clickable {
+                            isNotificationSelected.value = true
+                            isPersonalInfoSelected.value = false
+                            isMyOrdersSelected.value = false
+                        }
+                        .padding(vertical = 15.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Icon(
+                        modifier = Modifier
+                            .size(30.dp),
+                        painter = painterResource(id = R.drawable.ic_notifications),
+                        contentDescription = "personal_info",
+                        tint =
+                        if (isNotificationSelected.value)
+                            Color(0xFFE81D1C)
+                        else
+                            Color(0xFF3C3C3C),
                     )
-            }
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable {
-                        isNotificationSelected.value = true
-                        isPersonalInfoSelected.value = false
-                        isMyOrdersSelected.value = false
-                    }
-                    .padding(vertical = 15.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Icon(
-                    modifier = Modifier
-                        .size(30.dp),
-                    painter = painterResource(id = R.drawable.ic_notifications),
-                    contentDescription = "personal_info",
-                    tint =
-                    if (isNotificationSelected.value)
-                        Color(0xFFE81D1C)
-                    else
-                        Color(0xFF3C3C3C),
-                )
-                Text(
-                    modifier = Modifier
-                        .padding(start = 20.dp),
-                    text = "Уведомления",
-                    fontWeight = FontWeight(400),
-                    fontSize = 16.sp,
-                    color =
-                    if (isNotificationSelected.value)
-                        Color(0xFFE81D1C)
-                    else
-                        Color(0xFF3C3C3C),
+                    Text(
+                        modifier = Modifier
+                            .padding(start = 20.dp),
+                        text = "Уведомления",
+                        fontWeight = FontWeight(400),
+                        fontSize = 16.sp,
+                        color =
+                        if (isNotificationSelected.value)
+                            Color(0xFFE81D1C)
+                        else
+                            Color(0xFF3C3C3C),
                     )
+                }
             }
         }
-        Divider(
-            modifier = Modifier
-                .background(Color(0xFFD9D9D9))
-        )
         Spacer(modifier = Modifier.height(10.dp))
-        if (isPersonalInfoSelected.value){
-            LazyColumn(){
-                items(list){item->
+        if (isMyOrdersSelected.value) {
+            LazyColumn() {
+                items(list) { item ->
                     OrdersItem(item)
+                }
+            }
+        }
+        if (isNotificationSelected.value) {
+            if (notificationList.isEmpty()) {
+                EmptyNotificationScreen()
+            } else {
+                LazyColumn(){
+                    items(notificationList){items->
+                        NotificationItem(notifModel = items)
+                    }
                 }
             }
         }
