@@ -1,4 +1,4 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens
+package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
 data class OrdersModel(
     val orderId:Int,

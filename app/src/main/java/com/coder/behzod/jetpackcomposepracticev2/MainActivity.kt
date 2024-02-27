@@ -5,94 +5,43 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.navigation.NavController
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.ExampleHorizontalPager
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.AdsModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.SelectorView
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SelectorView
 
 
 class MainActivity : ComponentActivity() {
     @OptIn(ExperimentalMaterial3Api::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val products = ArrayList<ProductModel>()
-        products.add(
-            ProductModel(
+
+        val adsList = ArrayList<AdsModel>()
+        adsList.add(
+            AdsModel(
                 1,
-                "asus",
-                R.drawable.pic_product_image,
-                300000,
-                0,
-                "50",
-                false,
-                true,
-                30000,
-                "Pickup",
-                ""
-            )
-        )
-        products.add(
-            ProductModel(
-                1,
-                "asus",
-                R.drawable.pic_product_image,
-                300000,
-                0,
-                "50",
-                false,
-                true,
-                30000,
-                "Pickup",
-                ""
-            )
-        )
-        products.add(
-            ProductModel(
-                1,
-                "asus",
-                R.drawable.pic_product_image,
-                300000,
-                0,
-                "50",
-                false,
-                true,
-                30000,
-                "Pickup",
-                ""
-            )
-        )
-        products.add(
-            ProductModel(
-                1,
-                "asus",
-                R.drawable.pic_product_image,
-                300000,
-                0,
-                "50",
-                false,
-                true,
-                30000,
-                "Pickup",
-                ""
+                "HP VICTUS",
+                "15",
+                null,
+                "СОЗДАН ДЛЯ",
+                "ПРОФЕССИОНАЛОВ",
+                "ОТ ПРОФЕССИОНАЛОВ",
+                R.drawable.pic_laptop
             )
         )
         setContent {
-//            PaymentScreen(
-//                model =  ProductModel(
-//                    1,
-//                    "asus",
-//                    R.drawable.pic_product_image,
-//                    1000000,
-//                    0,
-//                    "50",
-//                    false,
-//                    true,
-//                    30000,
-//                    "Pickup",
-//                    ""
-//                ),
-//                products = products,
-//                modifier = Modifier.verticalScroll(rememberScrollState())
-//            )
-            SelectorView(navController = NavController(this))
+            ExampleHorizontalPager(
+                AdsModel(
+                    1,
+                    "HP VICTUS",
+                    "15",
+                    null,
+                    "СОЗДАН ДЛЯ",
+                    "ПРОФЕССИОНАЛОВ",
+                    "ОТ ПРОФЕССИОНАЛОВ",
+                    R.drawable.pic_laptop
+                )
+            )
         }
     }
 }

@@ -1,4 +1,4 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.views
+package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -19,9 +19,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
+import com.coder.behzod.jetpackcomposepracticev2.R
 
 @Composable
 fun ShoppingCartItem(model: ProductModel) {
@@ -67,18 +68,22 @@ fun ShoppingCartItem(model: ProductModel) {
         }
     }
 }
-//
-//@Preview
-//@Composable
-//fun PreviewShoppingCartItem() {
-////    val product = ShoppingCartModel(
-////        id = ProductID(1),
-////        "самовывозь",
-////        "30 000 UZS",
-////        "0 UZS",
-////        productPrice = ProductPrice("736 000 UZS"),
-////        productImage = ProductsImage(R.drawable.pic_product_image),
-////        productName = ProductName("asus")
-////    )
-//    ShoppingCartItem(product)
-//}
+
+@Preview
+@Composable
+fun PreviewShoppingCartItem() {
+    val product = ProductModel(
+        id = 1,
+        "Asus",
+        R.drawable.pic_product_image,
+        30000 ,
+        5,
+        "31",
+        false,
+        true,
+        10000,
+        "",
+        ""
+    )
+    ShoppingCartItem(product)
+}

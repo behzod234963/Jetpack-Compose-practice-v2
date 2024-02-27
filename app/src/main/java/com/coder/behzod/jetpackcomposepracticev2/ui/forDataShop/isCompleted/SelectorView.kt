@@ -1,4 +1,4 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens
+package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -38,7 +38,6 @@ import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.constants.CANCEL
 import com.coder.behzod.jetpackcomposepracticev2.constants.DELIVERED
 import com.coder.behzod.jetpackcomposepracticev2.constants.PROCESSING
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
 
 @Composable
 fun SelectorView(navController: NavController) {

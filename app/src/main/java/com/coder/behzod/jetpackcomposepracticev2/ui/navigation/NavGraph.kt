@@ -7,7 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SearchBar
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SearchResultsScreen
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.Screens
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.SelectorView
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SelectorView
 
 @Composable
 fun NavGraph() {
