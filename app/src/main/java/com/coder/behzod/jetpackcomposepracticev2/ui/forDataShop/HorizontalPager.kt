@@ -12,27 +12,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.derivedStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.AdsModel
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.CategoryModel
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ExampleHorizontalPager(adsModel:AdsModel) {
+fun AdsHorizontalPager(adsModel:AdsModel) {
     val screens = listOf(
         "Screen1",
         "Screen2",
@@ -55,26 +55,84 @@ fun ExampleHorizontalPager(adsModel:AdsModel) {
     val whiteColor = Color(0xFFB0B0B0)
     val grayColor = Color(0xFF353535)
     val pagerState = rememberPagerState (pageCount = {screens.size})
-    val selectedPageIndex = remember{
-        derivedStateOf { pagerState.currentPage }
-    }
-    HorizontalPager(state = pagerState) {page->
-        Row(
+    val selectedPageIndex = remember{ derivedStateOf { pagerState.currentPage } }
+    val colorSelector = remember{ mutableIntStateOf(0) }
+    Column(
+        modifier = Modifier
+            .height(200.dp)
+            .wrapContentWidth()
+    ) {
+        Box(
             modifier = Modifier
-                .height(200.dp)
-                .fillMaxWidth()
-                .background(color = Color(0xFF994545), shape = RoundedCornerShape(20.dp)),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.Center,
+                .fillMaxSize(),
+            contentAlignment = Alignment.BottomCenter
         ){
-            when(page){
-                0->{ HorizontalPagerScreen1(adsModel,whiteColor,grayColor,null) }
-                1->{ HorizontalPagerScreen2() }
-                2->{ HorizontalPagerScreen3() }
-                3->{ HorizontalPagerScreen4() }
+            HorizontalPager(state = pagerState) {page->
+                Row(
+                    modifier = Modifier
+                        .height(200.dp)
+                        .fillMaxWidth()
+                        .padding(10.dp)
+                        .background(color = Color(0xFF994545), shape = RoundedCornerShape(20.dp)),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.Center,
+                ){
+                    when(page){
+                        0->{
+                            colorSelector.intValue = selectedPageIndex.value
+                            HorizontalPagerScreen1(adsModel,whiteColor,grayColor,null)
+                        }
+                        1->{
+                            colorSelector.intValue = selectedPageIndex.value
+                            HorizontalPagerScreen2()
+                        }
+                        2->{
+                            colorSelector.intValue = selectedPageIndex.value
+                            HorizontalPagerScreen3()
+                        }
+                        3->{
+                            colorSelector.intValue = selectedPageIndex.value
+                            HorizontalPagerScreen4()
+                        }
+                    }
+                }
+            }
+            Row (
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(bottom = 20.dp),
+                horizontalArrangement = Arrangement.Center
+            ){
+                Image(
+                    modifier = Modifier
+                        .padding(end = 5.dp),
+                    painter = if (colorSelector.intValue == 0)painterResource(id = R.drawable.ic_circle_black)
+                              else painterResource(id = R.drawable.ic_circle_white),
+                    contentDescription = "circle"
+                )
+                Image(
+                    modifier = Modifier
+                        .padding(horizontal = 5.dp),
+                    painter = if (colorSelector.intValue == 1)painterResource(id = R.drawable.ic_circle_black)
+                              else painterResource(id = R.drawable.ic_circle_white),
+                    contentDescription = "circle"
+                )
+                Image(
+                    modifier = Modifier
+                        .padding(horizontal = 5.dp),
+                    painter = if (colorSelector.intValue == 2)painterResource(id = R.drawable.ic_circle_black)
+                              else painterResource(id = R.drawable.ic_circle_white),
+                    contentDescription = "circle"
+                )
+                Image(
+                    modifier = Modifier
+                        .padding(start = 5.dp),
+                    painter = if (colorSelector.intValue == 3)painterResource(id = R.drawable.ic_circle_black)
+                              else painterResource(id = R.drawable.ic_circle_white),
+                    contentDescription = "circle"
+                )
             }
         }
-
     }
 }
 
@@ -118,15 +176,15 @@ fun HorizontalPagerScreen1(
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp),
                 text = model.adsFirstDescription!!,
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = firstColor
             )
             Text(
                 modifier = Modifier
                     .align(Alignment.CenterStart)
-                    .padding(start = 107.dp),
+                    .padding(start = 105.dp),
                 text = model.adsSecondDescription!!,
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = secondColor
             )
             Text(
@@ -134,7 +192,7 @@ fun HorizontalPagerScreen1(
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp, top = 35.dp),
                 text = model.adsThirdDescription!!,
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = firstColor
             )
             Image(
@@ -144,43 +202,6 @@ fun HorizontalPagerScreen1(
                 painter = painterResource(model.adsImage!!),
                 contentDescription = "laptop"
             )
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(bottom = 10.dp),
-                contentAlignment = Alignment.BottomCenter
-            ){
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ){
-                    Image(
-                        modifier = Modifier
-                            .padding(end = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_black),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(horizontal = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(horizontal = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(start = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                }
-            }
         }
     }
 }
@@ -219,7 +240,7 @@ fun HorizontalPagerScreen2() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp),
                 text = "СОЗДАН ДЛЯ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.White
             )
             Text(
@@ -227,7 +248,7 @@ fun HorizontalPagerScreen2() {
                     .align(Alignment.CenterStart)
                     .padding(start = 107.dp),
                 text = "ПРОФЕССИОНАЛОВ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.DarkGray
             )
             Text(
@@ -235,7 +256,7 @@ fun HorizontalPagerScreen2() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp, top = 35.dp),
                 text = "ОТ ПРОФЕССИОНАЛОВ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.White
             )
             Image(
@@ -245,43 +266,6 @@ fun HorizontalPagerScreen2() {
                 painter = painterResource(id = R.drawable.pic_laptop),
                 contentDescription = "laptop"
             )
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(bottom = 10.dp),
-                contentAlignment = Alignment.BottomCenter
-            ){
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ){
-                    Image(
-                        modifier = Modifier
-                            .padding(end = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(horizontal = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_black),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(horizontal = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(start = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                }
-            }
         }
     }
 }
@@ -320,7 +304,7 @@ fun HorizontalPagerScreen3() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp),
                 text = "СОЗДАН ДЛЯ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.White
             )
             Text(
@@ -328,7 +312,7 @@ fun HorizontalPagerScreen3() {
                     .align(Alignment.CenterStart)
                     .padding(start = 107.dp),
                 text = "ПРОФЕССИОНАЛОВ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.DarkGray
             )
             Text(
@@ -336,7 +320,7 @@ fun HorizontalPagerScreen3() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp, top = 35.dp),
                 text = "ОТ ПРОФЕССИОНАЛОВ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.White
             )
             Image(
@@ -346,43 +330,6 @@ fun HorizontalPagerScreen3() {
                 painter = painterResource(id = R.drawable.pic_laptop),
                 contentDescription = "laptop"
             )
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(bottom = 10.dp),
-                contentAlignment = Alignment.BottomCenter
-            ){
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ){
-                    Image(
-                        modifier = Modifier
-                            .padding(end = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(horizontal = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(horizontal = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_black),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(start = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                }
-            }
         }
     }
 }
@@ -421,7 +368,7 @@ fun HorizontalPagerScreen4() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp),
                 text = "СОЗДАН ДЛЯ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.White
             )
             Text(
@@ -429,7 +376,7 @@ fun HorizontalPagerScreen4() {
                     .align(Alignment.CenterStart)
                     .padding(start = 107.dp),
                 text = "ПРОФЕССИОНАЛОВ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.DarkGray
             )
             Text(
@@ -437,7 +384,7 @@ fun HorizontalPagerScreen4() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp, top = 35.dp),
                 text = "ОТ ПРОФЕССИОНАЛОВ",
-                fontSize = 14.5.sp,
+                fontSize = 11.5.sp,
                 color = Color.White
             )
             Image(
@@ -447,43 +394,6 @@ fun HorizontalPagerScreen4() {
                 painter = painterResource(id = R.drawable.pic_laptop),
                 contentDescription = "laptop"
             )
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(bottom = 10.dp),
-                contentAlignment = Alignment.BottomCenter
-            ){
-                Row (
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ){
-                    Image(
-                        modifier = Modifier
-                            .padding(end = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(horizontal = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(horizontal = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_white),
-                        contentDescription = "circle"
-                    )
-                    Image(
-                        modifier = Modifier
-                            .padding(start = 5.dp),
-                        painter = painterResource(id = R.drawable.ic_circle_black),
-                        contentDescription = "circle"
-                    )
-                }
-            }
         }
     }
 }

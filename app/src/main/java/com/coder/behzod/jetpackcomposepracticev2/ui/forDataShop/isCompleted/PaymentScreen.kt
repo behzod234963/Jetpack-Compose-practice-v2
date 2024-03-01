@@ -50,7 +50,7 @@ fun PaymentScreen(model: ProductModel,products:ArrayList<ProductModel>,modifier:
             .verticalScroll(rememberScrollState())
             .background(Color(0xFFFFFFFF))
     ) {
-        SetTopAppBar()
+        SetTopAppBar(painterResource(id = R.drawable.ic_search))
         Column(
             modifier = Modifier
                 .padding(10.dp)

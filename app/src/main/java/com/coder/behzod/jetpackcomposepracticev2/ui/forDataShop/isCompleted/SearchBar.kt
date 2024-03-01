@@ -1,5 +1,6 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
+import android.app.LocaleConfig
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -27,6 +28,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -35,7 +37,7 @@ import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.Screens
 
 @Composable
-fun SearchBar(navController: NavController?) {
+fun SearchBar(navController: NavController) {
     var text by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
@@ -75,7 +77,7 @@ fun SearchBar(navController: NavController?) {
                 modifier = Modifier
                     .fillMaxWidth()
                     .clickable {
-                        navController?.navigate(Screens.SearchResults.route)
+                        navController.navigate(Screens.SearchResults.route)
                     }
             ) {
                 OutlinedTextField(
@@ -84,7 +86,7 @@ fun SearchBar(navController: NavController?) {
                         .background(Color(0xFFFFFFFF))
                         .fillMaxWidth()
                         .clickable {
-                            navController?.navigate(Screens.SearchResults.route)
+                            navController.navigate(Screens.SearchResults.route)
                         }
                         .border(1.dp, color = Color(0xFF000000), shape = RoundedCornerShape(10.dp)),
                     shape = RoundedCornerShape(10.dp),
@@ -103,5 +105,5 @@ fun SearchBar(navController: NavController?) {
 @Preview
 @Composable
 fun PreviewSearchBar() {
-    SearchBar(navController = null)
+    SearchBar(navController = NavController(LocalContext.current))
 }

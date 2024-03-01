@@ -4,11 +4,9 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.navigation.NavController
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.ExampleHorizontalPager
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.AdsHorizontalPager
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.AdsModel
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductModel
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SelectorView
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.HomeScreen
 
 
 class MainActivity : ComponentActivity() {
@@ -30,18 +28,7 @@ class MainActivity : ComponentActivity() {
             )
         )
         setContent {
-            ExampleHorizontalPager(
-                AdsModel(
-                    1,
-                    "HP VICTUS",
-                    "15",
-                    null,
-                    "СОЗДАН ДЛЯ",
-                    "ПРОФЕССИОНАЛОВ",
-                    "ОТ ПРОФЕССИОНАЛОВ",
-                    R.drawable.pic_laptop
-                )
-            )
+            HomeScreen()
         }
     }
 }

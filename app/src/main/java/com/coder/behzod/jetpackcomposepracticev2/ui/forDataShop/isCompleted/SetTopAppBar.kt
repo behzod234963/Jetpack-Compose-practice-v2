@@ -36,6 +36,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -47,11 +48,11 @@ import com.coder.behzod.jetpackcomposepracticev2.ui.theme.WhiteData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SetTopAppBar() {
+fun SetTopAppBar(painter:Painter) {
     val list = mutableListOf("O'z", "Ru")
     TopAppBar(
         modifier = Modifier
-            .background(Color.White),
+            .background(Color(0xFFFFFFFF)),
         colors = TopAppBarDefaults.topAppBarColors(
           containerColor = WhiteData
         ),
@@ -66,7 +67,7 @@ fun SetTopAppBar() {
             )
         },
         actions = {
-            SetTopAppBarDropDownMenu(list)
+            SetTopAppBarDropDownMenu(list, painter = painter)
         })
 }
 
@@ -75,7 +76,8 @@ fun SetTopAppBar() {
 fun SetTopAppBarDropDownMenu(
     list: MutableList<String>,
     onClick: (() -> Unit)? = null,
-    editClick: ((String) -> Unit)? = null
+    editClick: ((String) -> Unit)? = null,
+    painter:Painter
 ) {
     var isExpanded by remember { mutableStateOf(false) }
     var selectedText by remember { mutableStateOf(list[0]) }
@@ -93,10 +95,10 @@ fun SetTopAppBarDropDownMenu(
             }) {
             Icon(
                 modifier = Modifier
-                    .size(30.dp)
-                    .offset(x = 10.dp),
+                    .size(35.dp)
+                    .padding(start = 10.dp),
                 tint = Color.Black,
-                painter = painterResource(id = R.drawable.ic_search),
+                painter = painter,
                 contentDescription = "search"
             )
         }
@@ -188,9 +190,8 @@ fun SetTopAppBarDropDownMenu(
     }
 }
 
-@Composable
 @Preview
-fun ShowPreview() {
-    var list = mutableListOf("O'z", "Ru")
-    SetTopAppBar()
+@Composable
+fun PreviewSetTOpAppbar() {
+    SetTopAppBar(painter = painterResource(id = R.drawable.ic_call))
 }

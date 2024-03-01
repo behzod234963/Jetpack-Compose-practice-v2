@@ -125,7 +125,7 @@ fun SelectorView(navController: NavController) {
             .fillMaxSize()
             .background(Color(0xFFFFFFFF))
     ) {
-        SetTopAppBar()
+        SetTopAppBar(painterResource(id = R.drawable.ic_search))
         Divider(
             modifier = Modifier
                 .padding(horizontal = 10.dp)
