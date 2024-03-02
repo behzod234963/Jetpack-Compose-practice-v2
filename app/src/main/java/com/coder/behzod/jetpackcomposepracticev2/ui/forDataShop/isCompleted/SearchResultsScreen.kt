@@ -20,6 +20,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
+import androidx.compose.material3.LocalAbsoluteTonalElevation
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -28,6 +29,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,13 +37,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.Screens
 import com.coder.behzod.jetpackcomposepracticev2.ui.theme.BlackData
 import com.coder.behzod.jetpackcomposepracticev2.ui.theme.GrayData
 
 @Composable
-fun SearchResultsScreen(navController: NavController?) {
+fun SearchResultsScreen(navController:NavHostController) {
     val viewModel = viewModel<MainViewModel>()
     val searchText by viewModel.searchText.collectAsState()
     val programmers by viewModel.programmers.collectAsState()
@@ -70,7 +74,7 @@ fun SearchResultsScreen(navController: NavController?) {
                     contentDescription = "back",
                     modifier = Modifier
                         .clickable {
-                            navController?.navigate(Screens.SearchBar.route)
+                            navController.navigate(Screens.SearchBar.route)
                         }
                 )
             }
@@ -155,5 +159,5 @@ fun SearchResultsScreen(navController: NavController?) {
 @Preview
 @Composable
 fun PreviewSearchBarResults() {
-    SearchResultsScreen(navController = null)
+    SearchResultsScreen(navController = NavHostController(LocalContext.current))
 }

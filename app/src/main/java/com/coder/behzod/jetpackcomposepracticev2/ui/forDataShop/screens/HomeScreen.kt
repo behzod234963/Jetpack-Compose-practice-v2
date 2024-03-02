@@ -13,15 +13,15 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import com.coder.behzod.jetpackcomposepracticev2.R
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.AdsHorizontalPager
+import com.coder.behzod.jetpackcomposepracticev2.ui.views.AdsHorizontalPager
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.AdsModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SearchBar
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navHostController: NavHostController) {
     val context = LocalContext.current
     val adsModel = AdsModel(
         1,
@@ -41,14 +41,15 @@ fun HomeScreen() {
     ) {
         SetTopAppBar(painterResource(id = R.drawable.ic_call))
         Spacer(modifier = Modifier.height(5.dp))
-        SearchBar(navController = NavController(context))
+        SearchBar(navHostController)
         Spacer(modifier = Modifier.height(5.dp))
         AdsHorizontalPager(adsModel = adsModel)
+
     }
 }
 
 @Preview
 @Composable
 fun PreviewHomeScreen() {
-    HomeScreen()
+    HomeScreen(navHostController = NavHostController(LocalContext.current))
 }

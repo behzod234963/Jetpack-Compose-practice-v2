@@ -1,4 +1,4 @@
-package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop
+package com.coder.behzod.jetpackcomposepracticev2.ui.views
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image

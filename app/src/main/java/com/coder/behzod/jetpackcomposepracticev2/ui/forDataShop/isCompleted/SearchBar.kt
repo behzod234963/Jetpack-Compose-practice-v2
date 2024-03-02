@@ -1,7 +1,5 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
-import android.app.LocaleConfig
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -13,7 +11,6 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
@@ -27,18 +24,19 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.Screens
 
 @Composable
-fun SearchBar(navController: NavController) {
+fun SearchBar(navController :NavHostController) {
     var text by remember { mutableStateOf("") }
+    val context = LocalContext.current
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -46,7 +44,8 @@ fun SearchBar(navController: NavController) {
             .background(Color(0xFFFFFFFF))
     ) {
         Row(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .offset(y = 10.dp),
             horizontalArrangement = Arrangement.Center
         ) {
@@ -82,7 +81,7 @@ fun SearchBar(navController: NavController) {
             ) {
                 OutlinedTextField(
                     modifier = Modifier
-                        .padding( end = 5.dp, start = 5.dp)
+                        .padding(end = 5.dp, start = 5.dp)
                         .background(Color(0xFFFFFFFF))
                         .fillMaxWidth()
                         .clickable {
@@ -101,9 +100,8 @@ fun SearchBar(navController: NavController) {
         }
     }
 }
-
 @Preview
 @Composable
 fun PreviewSearchBar() {
-    SearchBar(navController = NavController(LocalContext.current))
+    SearchBar(navController = NavHostController(LocalContext.current))
 }

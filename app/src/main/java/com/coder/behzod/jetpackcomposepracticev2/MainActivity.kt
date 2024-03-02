@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.material3.ExperimentalMaterial3Api
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.AdsHorizontalPager
+import androidx.navigation.NavHostController
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.AdsModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.HomeScreen
 
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
             )
         )
         setContent {
-            HomeScreen()
+            HomeScreen(navHostController = NavHostController(this))
         }
     }
 }

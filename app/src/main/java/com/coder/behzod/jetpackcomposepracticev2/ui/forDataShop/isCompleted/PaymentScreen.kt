@@ -34,11 +34,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
-import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.DropDownMenuItem
+import com.coder.behzod.jetpackcomposepracticev2.ui.views.DropDownMenuItem
 
 @SuppressLint("InvalidColorHexValue")
 @Composable

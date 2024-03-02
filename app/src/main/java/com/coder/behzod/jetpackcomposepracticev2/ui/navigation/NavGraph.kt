@@ -8,31 +8,37 @@ import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.Sear
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SearchResultsScreen
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.Screens
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SelectorView
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.HomeScreen
 
 @Composable
 fun NavGraph() {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
-        startDestination = Screens.SearchBar.route
+        startDestination = Screens.HomeScreen.route
         ){
 //        navigate Search Results screen
         composable(
-            route = Screens.SearchResults.route,
+            route = Screens.SearchResults.route
         ){
-            SearchResultsScreen(navController = navController)
+            SearchResultsScreen(navController)
         }
 //        navigate SearchBar view
         composable(
             route = Screens.SearchBar.route
         ){
-            SearchBar(navController = navController)
+            SearchBar(navController)
         }
 //        navigate Selector View
         composable(
             route = Screens.SelectorView.route
         ){
             SelectorView(navController = navController)
+        }
+        composable(
+            Screens.HomeScreen.route
+        ){
+            HomeScreen(navHostController = navController)
         }
     }
 }
