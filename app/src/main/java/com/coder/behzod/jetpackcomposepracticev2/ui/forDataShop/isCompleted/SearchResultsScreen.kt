@@ -50,7 +50,6 @@ fun SearchResultsScreen(navController:NavHostController) {
     val searchText by viewModel.searchText.collectAsState()
     val programmers by viewModel.programmers.collectAsState()
     val isSearching by viewModel.isSearching.collectAsState()
-
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -74,7 +73,7 @@ fun SearchResultsScreen(navController:NavHostController) {
                     contentDescription = "back",
                     modifier = Modifier
                         .clickable {
-                            navController.navigate(Screens.SearchBar.route)
+                            navController.navigate(Screens.HomeScreen.route)
                         }
                 )
             }

@@ -23,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
+import com.coder.behzod.jetpackcomposepracticev2.constants.PRODUCT_MODEL
 
 @Composable
 fun ShoppingCartItem(model: ProductModel) {
@@ -72,18 +73,5 @@ fun ShoppingCartItem(model: ProductModel) {
 @Preview
 @Composable
 fun PreviewShoppingCartItem() {
-    val product = ProductModel(
-        id = 1,
-        "Asus",
-        R.drawable.pic_product_image,
-        30000 ,
-        5,
-        "31",
-        false,
-        true,
-        10000,
-        "",
-        ""
-    )
-    ShoppingCartItem(product)
+    ShoppingCartItem(PRODUCT_MODEL)
 }

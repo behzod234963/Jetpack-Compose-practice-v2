@@ -2,6 +2,7 @@ package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.coder.behzod.jetpackcomposepracticev2.constants.ALL_PROGRAMMERS
 import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,7 +20,7 @@ class MainViewModel: ViewModel() {
     val searchText = _searchText.asStateFlow()
     private val _isSearching = MutableStateFlow(false)
     val isSearching = _isSearching.asStateFlow()
-    private val _programmers = MutableStateFlow(allProgrammers)
+    private val _programmers = MutableStateFlow(ALL_PROGRAMMERS)
     @OptIn(FlowPreview::class)
     val programmers = searchText
         .debounce(500L)
@@ -60,21 +61,3 @@ data class Programmer(
         }
     }
 }
-private val allProgrammers = listOf(
-    Programmer(
-        firstName ="Behzod",
-        lastName ="Xudaybergenov"
-    ),
-    Programmer(
-        firstName = "Philipp",
-        lastName ="Lackner"
-    ),
-    Programmer(
-        firstName = "Neco",
-        lastName = "Desarello"
-    ),
-    Programmer(
-        firstName = "Bogibek",
-        lastName = "Matyakubov"
-    )
-)

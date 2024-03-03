@@ -36,18 +36,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
+import com.coder.behzod.jetpackcomposepracticev2.constants.SORT_TYPES
 import java.util.ArrayList
 
 @Composable
 fun FavoriteScreen(model: ProductModel) {
-    val sortTypes = remember {
-        mutableListOf(
-            "Сначала дешевые",
-            "Сначала дорогие",
-            "По рейтингу",
-            "Популярные"
-        )
-    }
     Box(
         modifier = Modifier
             .fillMaxSize()
@@ -60,7 +53,7 @@ fun FavoriteScreen(model: ProductModel) {
                 .width(200.dp),
             contentAlignment = Alignment.TopStart
         ) {
-            SortType(list = sortTypes)
+            SortType(list = SORT_TYPES)
         }
         Box(
             modifier = Modifier

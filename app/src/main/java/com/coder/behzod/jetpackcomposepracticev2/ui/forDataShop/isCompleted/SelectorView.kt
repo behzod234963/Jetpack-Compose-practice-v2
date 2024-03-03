@@ -37,6 +37,8 @@ import androidx.navigation.NavController
 import com.coder.behzod.jetpackcomposepracticev2.R
 import com.coder.behzod.jetpackcomposepracticev2.constants.CANCEL
 import com.coder.behzod.jetpackcomposepracticev2.constants.DELIVERED
+import com.coder.behzod.jetpackcomposepracticev2.constants.NOTIFICATION_MODEL
+import com.coder.behzod.jetpackcomposepracticev2.constants.ORDERS_MODEL
 import com.coder.behzod.jetpackcomposepracticev2.constants.PROCESSING
 
 @Composable
@@ -51,75 +53,14 @@ fun SelectorView(navController: NavController) {
         mutableStateOf(false)
     }
     val notificationList = ArrayList<NotificationModel>()
-    val list = ArrayList<OrdersModel>()
-    list.add(
-        OrdersModel(
-            1,
-            "1050017AS",
-            PROCESSING,
-            "Oct 21,2021"
-        )
-    )
-    list.add(
-        OrdersModel(
-            1,
-            "1050017AS",
-            DELIVERED,
-            "Oct 21,2021"
-        )
-    )
-    list.add(
-        OrdersModel(
-            1,
-            "1050017AS",
-            CANCEL,
-            "Oct 21,2021"
-        )
-    )
     notificationList.add(
-        NotificationModel(
-            1,
-            "26-10-2022",
-            "С новым 2023 годом",
-            "Lorem Ipsum is simply dummy text " +
-                    "of the printing and typesetting industry. " +
-                    "Lorem Ipsum has been the industry's standard dummy text " +
-                    "ever since the 1500s"
-        )
+        NOTIFICATION_MODEL
     )
-    notificationList.add(
-        NotificationModel(
-            1,
-            "26-10-2022",
-            "С новым 2023 годом",
-            "Lorem Ipsum is simply dummy text " +
-                    "of the printing and typesetting industry. " +
-                    "Lorem Ipsum has been the industry's standard dummy text " +
-                    "ever since the 1500s"
-        )
+    val ordersList = ArrayList<OrdersModel>()
+    ordersList.add(
+        ORDERS_MODEL
     )
-    notificationList.add(
-        NotificationModel(
-            1,
-            "26-10-2022",
-            "С новым 2023 годом",
-            "Lorem Ipsum is simply dummy text " +
-                    "of the printing and typesetting industry. " +
-                    "Lorem Ipsum has been the industry's standard dummy text " +
-                    "ever since the 1500s"
-        )
-    )
-    notificationList.add(
-        NotificationModel(
-            1,
-            "26-10-2022",
-            "С новым 2023 годом",
-            "Lorem Ipsum is simply dummy text " +
-                    "of the printing and typesetting industry. " +
-                    "Lorem Ipsum has been the industry's standard dummy text " +
-                    "ever since the 1500s"
-        )
-    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -282,7 +223,7 @@ fun SelectorView(navController: NavController) {
         Spacer(modifier = Modifier.height(10.dp))
         if (isMyOrdersSelected.value) {
             LazyColumn() {
-                items(list) { item ->
+                items(ordersList) { item ->
                     OrdersItem(item)
                 }
             }

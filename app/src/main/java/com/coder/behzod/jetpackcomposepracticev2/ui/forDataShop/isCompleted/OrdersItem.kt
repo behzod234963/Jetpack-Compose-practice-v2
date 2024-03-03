@@ -27,6 +27,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.constants.DELIVERED
+import com.coder.behzod.jetpackcomposepracticev2.constants.ORDERS_MODEL
 import com.coder.behzod.jetpackcomposepracticev2.constants.PROCESSING
 
 @Composable
@@ -123,11 +124,6 @@ fun OrdersItem(ordersModel: OrdersModel) {
 @Composable
 fun PreviewOrdersItem() {
     OrdersItem(
-        OrdersModel(
-            1,
-            "1050017AS",
-            "Доставлено",
-            "Oct 21,2021"
-        )
+        ORDERS_MODEL
     )
 }

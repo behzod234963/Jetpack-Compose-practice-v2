@@ -7,6 +7,7 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.navigation.NavHostController
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.AdsModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens.HomeScreen
+import com.coder.behzod.jetpackcomposepracticev2.ui.navigation.NavGraph
 
 
 class MainActivity : ComponentActivity() {
@@ -28,7 +29,7 @@ class MainActivity : ComponentActivity() {
             )
         )
         setContent {
-            HomeScreen(navHostController = NavHostController(this))
+            NavGraph()
         }
     }
 }

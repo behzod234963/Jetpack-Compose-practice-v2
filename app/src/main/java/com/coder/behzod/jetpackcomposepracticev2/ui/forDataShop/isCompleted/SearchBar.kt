@@ -24,6 +24,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -40,38 +41,29 @@ fun SearchBar(navController :NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
-            .height(80.dp)
+            .height(50.dp)
             .background(Color(0xFFFFFFFF))
     ) {
         Row(
             modifier = Modifier
-                .fillMaxWidth()
-                .offset(y = 10.dp),
+                .fillMaxWidth(),
             horizontalArrangement = Arrangement.Center
         ) {
-            Column(
-                modifier = Modifier
-                    .width(54.dp)
-                    .height(52.dp)
-                    .fillMaxSize()
-                    .align(Alignment.CenterVertically)
-            ) {
                 Column(
                     modifier = Modifier
-                        .fillMaxSize()
-                        .padding(start = 5.dp)
                         .clickable { }
                         .background(Color(0xFFFF0000)),
                     verticalArrangement = Arrangement.Center,
                     horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
+                        modifier = Modifier
+                            .padding(6.dp),
                         painter = painterResource(id = R.drawable.ic_category),
                         contentDescription = "category",
                         tint = Color(0xFFFFFFFF)
                     )
                 }
-            }
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -81,20 +73,25 @@ fun SearchBar(navController :NavHostController) {
             ) {
                 OutlinedTextField(
                     modifier = Modifier
-                        .padding(end = 5.dp, start = 5.dp)
+                        .padding(end = 5.dp, start = 10.dp)
                         .background(Color(0xFFFFFFFF))
                         .fillMaxWidth()
                         .clickable {
                             navController.navigate(Screens.SearchResults.route)
                         }
-                        .border(1.dp, color = Color(0xFF000000), shape = RoundedCornerShape(10.dp)),
+                        .border(1.dp, color = Color(0xFF000000), shape = RectangleShape),
                     shape = RoundedCornerShape(10.dp),
                     value = text,
                     enabled = false,
                     onValueChange = {
                         text = it
                     },
-                    placeholder = { Text(text = "Type Here...", color = Color(0xFF000000)) }
+                    placeholder = {
+                        Text(
+                            text = "Введите запрос",
+                            color = Color(0xFFB6B6B6)
+                        )
+                    }
                 )
             }
         }

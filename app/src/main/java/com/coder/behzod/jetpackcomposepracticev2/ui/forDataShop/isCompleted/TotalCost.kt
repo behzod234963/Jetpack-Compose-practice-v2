@@ -190,8 +190,3 @@ fun TotalCost(model: ProductModel,modifier:Modifier,products: ArrayList<ProductM
         }
     }
 }
-
-@Composable
-fun VertScroll() {
-
-}

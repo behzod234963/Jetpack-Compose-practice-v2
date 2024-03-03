@@ -25,10 +25,10 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
+import com.coder.behzod.jetpackcomposepracticev2.constants.NOTIFICATION_MODEL
 
 @Composable
 fun NotificationItem(notifModel: NotificationModel) {
-
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -103,14 +103,6 @@ fun NotificationItem(notifModel: NotificationModel) {
 @Composable
 fun PreviewNotificationItem() {
     NotificationItem(
-        NotificationModel(
-            1,
-            "26-10-2022",
-            "С новым 2023 годом",
-            "Lorem Ipsum is simply dummy text " +
-                    "of the printing and typesetting industry. " +
-                    "Lorem Ipsum has been the industry's standard dummy text " +
-                    "ever since the 1500s"
-        )
+        NOTIFICATION_MODEL
     )
 }

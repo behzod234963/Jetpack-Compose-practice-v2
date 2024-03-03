@@ -9,7 +9,9 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material3.Text
+import androidx.compose.material3.minimumInteractiveComponentSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,13 +22,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.CategoryModel
 
 @Composable
-fun CategoryRow() {
+fun CategoryRow(categoryModel:CategoryModel) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp)
+            .height(80.dp)
             .background(Color.White),
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -37,17 +40,20 @@ fun CategoryRow() {
                 .clickable {  },
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_tv),
-                contentDescription = "category tv",
-                modifier = Modifier
-                    .clickable {  }
-            )
+            categoryModel.categoryIcon?.let { painterResource(it) }?.let {
+                Image(
+                    painter = it,
+                    contentDescription = "category tv",
+                    modifier = Modifier
+                        .clickable {  }
+                        .size(30.dp)
+                )
+            }
             Text(
                 modifier = Modifier
-                    .padding(start = 10.dp)
+                    .padding(start = 30.dp)
                     .clickable {  },
-                text = "Мониторы",
+                text = categoryModel.categoryName,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp
             )
@@ -63,7 +69,7 @@ fun CategoryRow() {
                 text = "Смотреть еще",
                 modifier = Modifier
                     .clickable { }
-                    .offset(x = -10.dp),
+                    .offset(x = (-10).dp),
             )
             Image(
                 painter = painterResource(id = R.drawable.ic_view_more),
@@ -74,10 +80,4 @@ fun CategoryRow() {
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun PreviewCategoryRow() {
-    CategoryRow()
 }

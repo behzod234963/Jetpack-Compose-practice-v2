@@ -22,6 +22,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextFieldDefaults
@@ -55,7 +56,7 @@ fun PaymentScreen(model: ProductModel,products:ArrayList<ProductModel>,modifier:
                 .padding(10.dp)
                 .fillMaxSize()
         ) {
-            Divider(
+            HorizontalDivider(
                 modifier = Modifier
                     .offset(y = 10.dp)
                     .background(Color(0xFFD9D9D9))

@@ -72,7 +72,6 @@ fun AdsHorizontalPager(adsModel:AdsModel) {
                     modifier = Modifier
                         .height(200.dp)
                         .fillMaxWidth()
-                        .padding(10.dp)
                         .background(color = Color(0xFF994545), shape = RoundedCornerShape(20.dp)),
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.Center,
@@ -176,15 +175,15 @@ fun HorizontalPagerScreen1(
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp),
                 text = model.adsFirstDescription!!,
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = firstColor
             )
             Text(
                 modifier = Modifier
                     .align(Alignment.CenterStart)
-                    .padding(start = 105.dp),
+                    .padding(start = 95.dp),
                 text = model.adsSecondDescription!!,
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = secondColor
             )
             Text(
@@ -192,7 +191,7 @@ fun HorizontalPagerScreen1(
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp, top = 35.dp),
                 text = model.adsThirdDescription!!,
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = firstColor
             )
             Image(
@@ -238,17 +237,17 @@ fun HorizontalPagerScreen2() {
             Text(
                 modifier = Modifier
                     .align(Alignment.CenterStart)
-                    .padding(start = 10.dp),
+                    .padding(start = 8.dp),
                 text = "СОЗДАН ДЛЯ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.White
             )
             Text(
                 modifier = Modifier
                     .align(Alignment.CenterStart)
-                    .padding(start = 107.dp),
+                    .padding(start = 95.dp),
                 text = "ПРОФЕССИОНАЛОВ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.DarkGray
             )
             Text(
@@ -256,7 +255,7 @@ fun HorizontalPagerScreen2() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp, top = 35.dp),
                 text = "ОТ ПРОФЕССИОНАЛОВ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.White
             )
             Image(
@@ -304,15 +303,15 @@ fun HorizontalPagerScreen3() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp),
                 text = "СОЗДАН ДЛЯ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.White
             )
             Text(
                 modifier = Modifier
                     .align(Alignment.CenterStart)
-                    .padding(start = 107.dp),
+                    .padding(start = 95.dp),
                 text = "ПРОФЕССИОНАЛОВ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.DarkGray
             )
             Text(
@@ -320,7 +319,7 @@ fun HorizontalPagerScreen3() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp, top = 35.dp),
                 text = "ОТ ПРОФЕССИОНАЛОВ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.White
             )
             Image(
@@ -368,15 +367,15 @@ fun HorizontalPagerScreen4() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp),
                 text = "СОЗДАН ДЛЯ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.White
             )
             Text(
                 modifier = Modifier
                     .align(Alignment.CenterStart)
-                    .padding(start = 107.dp),
+                    .padding(start = 95.dp),
                 text = "ПРОФЕССИОНАЛОВ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.DarkGray
             )
             Text(
@@ -384,7 +383,7 @@ fun HorizontalPagerScreen4() {
                     .align(Alignment.CenterStart)
                     .padding(start = 10.dp, top = 35.dp),
                 text = "ОТ ПРОФЕССИОНАЛОВ",
-                fontSize = 11.5.sp,
+                fontSize = 13.sp,
                 color = Color.White
             )
             Image(

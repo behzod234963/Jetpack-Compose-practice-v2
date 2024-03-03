@@ -29,6 +29,7 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -43,13 +44,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
+import com.coder.behzod.jetpackcomposepracticev2.constants.LOCALE_LIST
 import com.coder.behzod.jetpackcomposepracticev2.ui.theme.WhiteData
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SetTopAppBar(painter:Painter) {
-    val list = mutableListOf("O'z", "Ru")
     TopAppBar(
         modifier = Modifier
             .background(Color(0xFFFFFFFF)),
@@ -67,7 +68,7 @@ fun SetTopAppBar(painter:Painter) {
             )
         },
         actions = {
-            SetTopAppBarDropDownMenu(list, painter = painter)
+            SetTopAppBarDropDownMenu(LOCALE_LIST, painter = painter)
         })
 }
 
@@ -82,6 +83,9 @@ fun SetTopAppBarDropDownMenu(
     var isExpanded by remember { mutableStateOf(false) }
     var selectedText by remember { mutableStateOf(list[0]) }
     var isSelected by remember { mutableStateOf(false) }
+    val flagsIndex = remember { mutableIntStateOf(0) }
+    val localesIndex = remember { mutableIntStateOf(0) }
+    val indicator = remember { mutableStateOf(false) }
     Row(
         modifier = Modifier
             .wrapContentWidth()
@@ -111,18 +115,20 @@ fun SetTopAppBarDropDownMenu(
         ) {
             OutlinedTextField(
                 leadingIcon = {
-                    if (isSelected){
+                    if (localesIndex.intValue == 1) indicator.value = false
+                    if (localesIndex.intValue == 0) indicator.value = true
+                    if (indicator.value){
                         Image(
                             modifier = Modifier
-                                .size(30.dp),
-                            painter = painterResource(id = R.drawable.ic_flag_rus),
+                                .size(28.dp),
+                            painter = painterResource(id = R.drawable.ic_flag_uz),
                             contentDescription = ""
                         )
                     }else{
                         Image(
                             modifier = Modifier
-                                .size(28.dp),
-                            painter = painterResource(id = R.drawable.ic_flag_uz),
+                                .size(30.dp),
+                            painter = painterResource(id = R.drawable.ic_flag_rus),
                             contentDescription = ""
                         )
                     }
@@ -179,6 +185,8 @@ fun SetTopAppBarDropDownMenu(
                             }
                         },
                         onClick = {
+                            flagsIndex.intValue = i
+                            localesIndex.intValue = i
                             isSelected = !isSelected
                             isExpanded = false
                             selectedText = list[i]
