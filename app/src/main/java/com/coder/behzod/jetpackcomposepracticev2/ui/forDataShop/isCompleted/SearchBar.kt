@@ -50,11 +50,12 @@ fun SearchBar(navController :NavHostController) {
             horizontalArrangement = Arrangement.Center
         ) {
                 Column(
+                    verticalArrangement = Arrangement.Center,
+                    horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier
+                        .padding(start = 5.dp)
                         .clickable { }
                         .background(Color(0xFFFF0000)),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally
                 ) {
                     Icon(
                         modifier = Modifier

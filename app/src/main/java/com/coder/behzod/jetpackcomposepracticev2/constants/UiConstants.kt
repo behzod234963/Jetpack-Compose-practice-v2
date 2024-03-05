@@ -94,3 +94,5 @@ val PRODUCT_MODEL = ProductModel(
     "",
     ""
 )
+
+val PRODUCT_LIST = ArrayList<ProductModel>()
