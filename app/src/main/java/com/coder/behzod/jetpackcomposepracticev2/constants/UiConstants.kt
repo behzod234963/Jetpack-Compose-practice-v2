@@ -96,3 +96,11 @@ val PRODUCT_MODEL = ProductModel(
 )
 
 val PRODUCT_LIST = ArrayList<ProductModel>()
+
+val LAPTOPS = "Ноутбуки"
+
+val MONITORS = "Мониторы"
+
+val SMARTPHONES = "Смартфоны"
+
+val ACCESSORIES = "Аксессуары"
