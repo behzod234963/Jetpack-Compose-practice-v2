@@ -29,11 +29,25 @@ val ADS_MODEL = AdsModel(
     R.drawable.pic_laptop
 )
 
-val CATEGORY_MODEL = CategoryModel(
+val CATEGORY_MODEL_LAPTOPS = CategoryModel(
     1,
     "Ноутбуки",
     null,
     R.drawable.ic_laptop_large
+)
+
+val CATEGORY_MODEL_MONITORS = CategoryModel(
+    2,
+    "Мониторы",
+    null,
+    R.drawable.ic_monitors
+)
+
+val CATEGORY_MODEL_TV = CategoryModel(
+    3,
+    "Телевизоры",
+    null,
+    R.drawable.ic_monitors
 )
 
 val SORT_TYPES = mutableListOf(
@@ -104,3 +118,5 @@ val MONITORS = "Мониторы"
 val SMARTPHONES = "Смартфоны"
 
 val ACCESSORIES = "Аксессуары"
+
+val TV = "Телевизоры"

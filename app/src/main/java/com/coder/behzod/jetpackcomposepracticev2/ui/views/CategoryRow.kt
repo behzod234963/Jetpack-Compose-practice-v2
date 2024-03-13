@@ -53,7 +53,7 @@ fun CategoryRow(categoryModel:CategoryModel) {
                 modifier = Modifier
                     .padding(start = 30.dp)
                     .clickable {  },
-                text = categoryModel.categoryName,
+                text = categoryModel.categoryName!!,
                 fontWeight = FontWeight.Bold,
                 fontSize = 18.sp
             )
