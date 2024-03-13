@@ -60,7 +60,6 @@ fun AdsHorizontalPager(adsModel:AdsModel) {
     Column(
         modifier = Modifier
             .height(200.dp)
-            .padding(5.dp)
             .wrapContentWidth()
     ) {
         Box(
