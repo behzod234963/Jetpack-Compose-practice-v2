@@ -14,14 +14,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.coder.behzod.jetpackcomposepracticev2.R
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.BrandsModel
 
 @Composable
-fun BrandsRow() {
+fun BrandsRow(model:BrandsModel) {
     Row(
         modifier = Modifier.fillMaxWidth()
             .padding(10.dp),
@@ -29,12 +31,12 @@ fun BrandsRow() {
         horizontalArrangement = Arrangement.Start
     ) {
         Icon(
-            painter = painterResource(id = R.drawable.ic_brands),
+            painter = painterResource(id = model.brandsImage!!),
             contentDescription = null
         )
         Spacer(modifier = Modifier.width(20.dp))
         Text(
-            text = "Бренды",
+            text = model.brandsTitle!!,
             color = Color(0xFF3C3C3C),
             fontSize = 18.sp,
             fontWeight = FontWeight(600)

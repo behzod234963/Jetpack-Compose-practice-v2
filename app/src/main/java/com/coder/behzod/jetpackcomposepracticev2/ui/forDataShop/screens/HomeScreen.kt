@@ -1,12 +1,15 @@
 package com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.GridItemSpan
@@ -18,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
@@ -36,11 +40,13 @@ import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.Prod
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.ProductsItem
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SearchBar
 import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SetTopAppBar
+import com.coder.behzod.jetpackcomposepracticev2.ui.forDataShop.isCompleted.SpecialForYouModel
 import com.coder.behzod.jetpackcomposepracticev2.ui.views.AdsHorizontalPager
 import com.coder.behzod.jetpackcomposepracticev2.ui.views.BrandsItem
 import com.coder.behzod.jetpackcomposepracticev2.ui.views.BrandsRow
 import com.coder.behzod.jetpackcomposepracticev2.ui.views.CategoryRow
 import com.coder.behzod.jetpackcomposepracticev2.ui.views.CategoryView
+import com.coder.behzod.jetpackcomposepracticev2.ui.views.SpecialForYouItem
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -139,7 +145,7 @@ fun HomeScreen(navController: NavHostController) {
                         )
                     )
                     Spacer(modifier = Modifier.height(10.dp))
-                    BrandsRow()
+                    BrandsRow(BrandsModel(1,"Бренды",R.drawable.ic_brands))
                     Spacer(modifier = Modifier.height(10.dp))
                 }
             }
@@ -169,6 +175,69 @@ fun HomeScreen(navController: NavHostController) {
                         ),
                         model =CategoryModel(1, ACCESSORIES,R.drawable.pic_acessories,null)
                     )
+                    Spacer(modifier = Modifier.height(10.dp))
+                    BrandsRow(BrandsModel(1,"Наша подборка для вас",R.drawable.ic_special_for_you))
+                    Spacer(modifier = Modifier.height(10.dp))
+                }
+            }
+            item(span = { GridItemSpan(2) }){
+                Row (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(10.dp),
+                    horizontalArrangement = Arrangement.SpaceAround
+                ){
+                    Column{
+                        SpecialForYouItem(
+                            model = SpecialForYouModel(1,R.drawable.pic_laptop_staggered_first),
+                            modifier = Modifier
+                                .height(130.dp)
+                                .width(110.dp),
+                            contentScale = ContentScale.FillHeight
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        SpecialForYouItem(
+                            model = SpecialForYouModel(1,R.drawable.pic_smartphones_staggered_first),
+                            modifier = Modifier
+                                .height(80.dp)
+                                .width(110.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Column{
+                        SpecialForYouItem(
+                            model = SpecialForYouModel(1,R.drawable.pic_laptop_staggered_first),
+                            modifier = Modifier
+                                .height(80.dp)
+                                .width(110.dp),
+                            contentScale = ContentScale.FillHeight
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        SpecialForYouItem(
+                            model = SpecialForYouModel(1,R.drawable.pic_smartphones_staggered_first),
+                            modifier = Modifier
+                                .height(70.dp)
+                                .width(100.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
+                    Column{
+                        SpecialForYouItem(
+                            model = SpecialForYouModel(1,R.drawable.pic_laptop_staggered_first),
+                            modifier = Modifier
+                                .height(130.dp)
+                                .width(110.dp),
+                            contentScale = ContentScale.FillHeight
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        SpecialForYouItem(
+                            model = SpecialForYouModel(1,R.drawable.pic_smartphones_staggered_first),
+                            modifier = Modifier
+                                .height(70.dp)
+                                .width(100.dp),
+                            contentScale = ContentScale.Crop
+                        )
+                    }
                 }
             }
         }
