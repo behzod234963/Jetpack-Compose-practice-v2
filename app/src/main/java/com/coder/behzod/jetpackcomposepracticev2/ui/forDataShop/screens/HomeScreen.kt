@@ -206,24 +206,24 @@ fun HomeScreen(navController: NavHostController) {
                     }
                     Column{
                         SpecialForYouItem(
-                            model = SpecialForYouModel(1,R.drawable.pic_laptop_staggered_first),
+                            model = SpecialForYouModel(1,R.drawable.pic_hertphones_staggerered),
                             modifier = Modifier
                                 .height(80.dp)
                                 .width(110.dp),
-                            contentScale = ContentScale.FillHeight
+                            contentScale = ContentScale.Crop
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         SpecialForYouItem(
-                            model = SpecialForYouModel(1,R.drawable.pic_smartphones_staggered_first),
+                            model = SpecialForYouModel(1,R.drawable.pic_tablets_staggered),
                             modifier = Modifier
-                                .height(70.dp)
-                                .width(100.dp),
+                                .height(130.dp)
+                                .width(110.dp),
                             contentScale = ContentScale.Crop
                         )
                     }
                     Column{
                         SpecialForYouItem(
-                            model = SpecialForYouModel(1,R.drawable.pic_laptop_staggered_first),
+                            model = SpecialForYouModel(1,R.drawable.pic_watches_staggered),
                             modifier = Modifier
                                 .height(130.dp)
                                 .width(110.dp),
@@ -231,14 +231,25 @@ fun HomeScreen(navController: NavHostController) {
                         )
                         Spacer(modifier = Modifier.height(10.dp))
                         SpecialForYouItem(
-                            model = SpecialForYouModel(1,R.drawable.pic_smartphones_staggered_first),
+                            model = SpecialForYouModel(1,R.drawable.pic_smartphones_staggered),
                             modifier = Modifier
-                                .height(70.dp)
+                                .height(80.dp)
                                 .width(100.dp),
                             contentScale = ContentScale.Crop
                         )
                     }
                 }
+            }
+            item(span = { GridItemSpan(2) }) {
+                Row (
+                    modifier = Modifier
+                        .fillMaxWidth()
+                ){
+                    CategoryRow(categoryModel = CategoryModel(null, ACCESSORIES,null,R.drawable.ic_acessories))
+                }
+            }
+            items(productList, span = { GridItemSpan(1) }){
+                ProductsItem(product = it)
             }
         }
     }
